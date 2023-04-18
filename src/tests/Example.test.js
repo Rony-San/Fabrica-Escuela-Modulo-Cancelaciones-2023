@@ -1,4 +1,4 @@
-import { isValidEmail, isValidPhone } from './Example'
+import { isValidEmail, isValidPhone } from '../components/Example'
 
 describe('isValidEmail', () => {
     // Can use test ot it
@@ -13,7 +13,7 @@ describe('isValidEmail', () => {
         expect(result).toBe(true)
     })
     it('should return false when email is invalid', () => {
-        const email = 'jorge.ma@mail.co'
+        const email = 'jorg-e.ma@mail.co'
         const result = isValidEmail(email)
         expect(result).toBe(false)
     })
@@ -31,7 +31,7 @@ describe('isValidPhone', () => {
         expect(result).toBe(true)
     })
     it('should return false when phone is invalid', () => {
-        const phone = '1234567891'
+        const phone = '123456789'
         const result = isValidPhone(phone)
         expect(result).toBe(false)
     })
