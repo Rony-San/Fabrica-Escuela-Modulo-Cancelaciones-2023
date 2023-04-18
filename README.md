@@ -28,3 +28,4 @@ You may also see any lint errors in the console.
 ### `npm run test`
 Run all the written tests
 
+# Others Scripts
