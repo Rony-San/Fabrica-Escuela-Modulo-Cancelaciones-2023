@@ -13,7 +13,7 @@ describe('isValidEmail', () => {
         expect(result).toBe(true)
     })
     it('should return false when email is invalid', () => {
-        const email = 'jorge.-ma@ma.co'
+        const email = 'jorge.ma@mail.co'
         const result = isValidEmail(email)
         expect(result).toBe(false)
     })
@@ -31,7 +31,7 @@ describe('isValidPhone', () => {
         expect(result).toBe(true)
     })
     it('should return false when phone is invalid', () => {
-        const phone = '123456789'
+        const phone = '1234567891'
         const result = isValidPhone(phone)
         expect(result).toBe(false)
     })
