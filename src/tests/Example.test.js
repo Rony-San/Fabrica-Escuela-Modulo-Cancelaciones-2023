@@ -17,6 +17,11 @@ describe('isValidEmail', () => {
         const result = isValidEmail(email)
         expect(result).toBe(false)
     })
+    it('should return false when email is invalid', () => {
+        const email = 'jorge-ma@mail.co'
+        const result = isValidEmail(email)
+        expect(result).toBe(false)
+    })
 })
 
 describe('isValidName', () => {

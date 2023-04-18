@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <div className='container'>
       <header className='header'>
-        <h1 className='header__title'>Módulo de cancelaciones</h1>
+        <h1 className='header__title'>Módulo de cancelaciones asdasdas</h1>
       </header>
       <Outlet />
     </div>
