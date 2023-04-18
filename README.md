@@ -1,4 +1,4 @@
-# Getting Started with Vite
+# Getting Started with Vite@
 This project was bootstrapped with [Vite](https://vitejs.dev/guide/) [Vite GitHub](https://github.com/vitejs/vite/).
 
 # Cloning this repository
