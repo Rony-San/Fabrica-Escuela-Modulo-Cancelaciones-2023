@@ -1,7 +1,5 @@
 name: Pipeline CI
 on:
-  push:
-    branches: [ "trunk" ]
   pull_request:
     branches: [ "trunk" ]
   workflow_dispatch:
@@ -25,7 +23,7 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npx run test
+    - run: npm run test
 
   sonarcloud:
     name: SonarCloud

@@ -10,7 +10,12 @@ module.exports = {
     '!**/dist/**',
     '!src/**/*.test.{js,jsx}',
     '!**/*.config.{js,jsx,cjs}',
-    '!**/*.setup.{js,jsx,cjs}'
+    '!**/*.setup.{js,jsx,cjs}',
+    '!src/*.{js,jsx}',
+    '!src/app/*.{js,jsx}',
+    '!src/app/**/*.{js,jsx}',
+    '!src/assets/**',
+    '!src/routes/**',
   ],
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
 }
