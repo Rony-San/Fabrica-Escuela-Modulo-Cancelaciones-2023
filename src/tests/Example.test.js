@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { prettyDOM } from '@testing-library/dom'
-import Example from '../components/Example' // importacion del componente a testear
-import { isValidEmail, isValidName, isValidPhone } from '../components/Example' // importacion de las funciones a testear
+// import { prettyDOM } from '@testing-library/dom'
+// importamos el componente y las funciones que queremos probar
+import Example, { isValidEmail, isValidName, isValidPhone } from '../components/Example'
 
 describe('isValidEmail', () => {
     // Can use test ot it
