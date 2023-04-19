@@ -4,6 +4,7 @@ import './Home.css'
 
 const Home = () => {
   const [value, setValue] = useState(0)
+  
   return (
     <div className='grid'>
       <h1>Home View</h1>

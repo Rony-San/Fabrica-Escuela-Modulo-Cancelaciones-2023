@@ -9,23 +9,19 @@ import { NavLink } from 'react-router-dom'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '/vite.svg'
 import './Default.css'
+import Logos from '../../components/default/Logos'
 
 export default function Default() {
   const dispatch = useDispatch()
   const counterState = useSelector((state) => state.counter)
   return (
     <div>
-      <div>
-        <a href='https://vitejs.dev' target='_blank'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://reactjs.org' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
+      <h1>De aqui hacia abajo</h1>
+      <Logos viteLogo={viteLogo} reactLogo={reactLogo} />
       <h1>Vite + React</h1>
       <div>
         <h2>Value: {counterState.value}</h2>
+        {counterState.status === 'loading' && <h2>Loading...</h2>}
         <div className='card'>
           <button onClick={() => dispatch(incrementAsync(-1))}>
             Decrement Async
