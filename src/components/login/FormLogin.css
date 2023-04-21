@@ -27,6 +27,7 @@ form .text_field {
     border: none;
     background: none;
     outline: none;
+    color: #0f0f0f;
 }
 
 .text_field label {
