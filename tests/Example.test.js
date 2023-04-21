@@ -96,6 +96,7 @@ describe('Example', () => {
         
         // en caso de que el test falle cuando no deería, podemos usar el metodo debug
         // para visulizar por consola lo que se esta renderizando
+        
         // comp.debug()
 
         expect(nameField).toBeInTheDocument()
