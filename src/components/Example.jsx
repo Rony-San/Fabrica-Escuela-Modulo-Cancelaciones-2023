@@ -1,7 +1,8 @@
 import { useState } from "react"
 
 export const isValidEmail = (email) => {
-    const emailRegex = /^[a-zA-Z0-9]+[\.]*[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,20}$/g
+    if (email.length > 30) return false
+    const emailRegex = /^[a-zA-Z0-9]+[.]*[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{1,4}$/g
     return emailRegex.test(email)
 }
 
