@@ -3,7 +3,7 @@ on:
   push:
     branches: [ "master" ]
   pull_request:
-    branches: [ "master" ]
+    types: [opened, synchronize, reopened] # additional types: [closed, ready_for_review, reopened]
   workflow_dispatch:
 
 permissions:
@@ -50,3 +50,4 @@ jobs:
         with:
           args: >
             -Dsonar.qualitygate.wait=true
+            -Dsonar.verbose=true
