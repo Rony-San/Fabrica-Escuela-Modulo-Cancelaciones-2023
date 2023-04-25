@@ -39,11 +39,11 @@ export default function Example() {
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value.trim())} />
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value.trim())} />
             <label htmlFor="phone">Phone</label>
-            <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value.trim())} />
             <button type="submit">Submit</button>
         </form>
     )
