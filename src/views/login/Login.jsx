@@ -6,7 +6,7 @@ export default function Login() {
   return (
     <div class='center'>
       <div class='image'>
-        <img src='/public/backgroundLogin.jpg' alt='' />
+        <img src='/imgs/backgroundLogin.jpg' alt='' />
       </div>
       <FormLogin />
     </div>

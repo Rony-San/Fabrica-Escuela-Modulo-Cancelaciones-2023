@@ -7,7 +7,7 @@ import {
 } from '../../app/features/counter/counterSlice'
 import { NavLink } from 'react-router-dom'
 import reactLogo from '../../assets/react.svg'
-import viteLogo from '/vite.svg'
+import viteLogo from '/icons/vite.svg'
 import './Default.css'
 import Logos from '../../components/default/Logos'
 
