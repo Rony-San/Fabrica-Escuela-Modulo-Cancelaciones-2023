@@ -1,7 +1,8 @@
 import { useState } from "react"
 
 export const isValidEmail = (email) => {
-    const emailRegex = /^[a-zA-Z0-9]+[\.]*[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,20}$/g
+    if (email.length > 30) return false
+    const emailRegex = /^[a-zA-Z0-9]+[.]*[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{1,4}$/g
     return emailRegex.test(email)
 }
 
@@ -20,22 +21,45 @@ export default function Example() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
-    const [submitted, setSubmitted] = useState(false)
+
+    const resetForm = () => {
+        setName("")
+        setEmail("")
+        setPhone("")
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if (isValidEmail(email) && isValidName(name) && isValidPhone(phone)) {
+            resetForm()
+            console.log("Submitted")
+        }
+    }
+
+    const handleChangesEmail = (e) => {
+        // if (e.target.value.length <= 30)
+        setEmail(e.target.value.trim())
+    }
+
+    const handleChangesName = (e) => {
+        // if (e.target.value.length <= 30)
+        setName(e.target.value.trim())
+    }
+
+    const handleChangesPhone = (e) => {
+        // if (e.target.value.length <= 10)
+        setPhone(e.target.value.trim())
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" id="name" value={name} onChange={handleChangesName} />
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" id="email" value={email} onChange={handleChangesEmail} />
             <label htmlFor="phone">Phone</label>
-            <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
-            <button type="submit" onClick={(e) => {
-                e.preventDefault()
-                if (isValidEmail(email)) {
-                    setSubmitted(true)
-                }
-            }}>Submit</button>
-            {submitted && <p>Thank you for submitting!</p>}
+            <input type="tel" id="phone" value={phone} onChange={handleChangesPhone} />
+            <button type="submit">Submit</button>
         </form>
     )
 }
