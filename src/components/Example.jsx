@@ -36,14 +36,26 @@ export default function Example() {
         }
     }
 
+    const handleChangesEmail = (e) => {
+        setEmail(e.target.value.trim())
+    }
+
+    const handleChangesName = (e) => {
+        setName(e.target.value.trim())
+    }
+
+    const handleChangesPhone = (e) => {
+        setPhone(e.target.value.trim())
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value.trim())} />
+            <input type="text" id="name" value={name} onChange={handleChangesName} />
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value.trim())} />
+            <input type="email" id="email" value={email} onChange={handleChangesEmail} />
             <label htmlFor="phone">Phone</label>
-            <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value.trim())} />
+            <input type="tel" id="phone" value={phone} onChange={handleChangesPhone} />
             <button type="submit">Submit</button>
         </form>
     )
