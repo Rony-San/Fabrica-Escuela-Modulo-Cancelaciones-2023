@@ -37,14 +37,17 @@ export default function Example() {
     }
 
     const handleChangesEmail = (e) => {
+        // if (e.target.value.length <= 30)
         setEmail(e.target.value.trim())
     }
 
     const handleChangesName = (e) => {
+        // if (e.target.value.length <= 30)
         setName(e.target.value.trim())
     }
 
     const handleChangesPhone = (e) => {
+        // if (e.target.value.length <= 10)
         setPhone(e.target.value.trim())
     }
 
