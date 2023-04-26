@@ -1,6 +1,7 @@
 import FormLogin from '../../components/login/FormLogin'
 import { ToastContainer } from 'react-toastify'
-//import backgroundLogin from '../../assets/images/backgroundLogin.jpg'
+import 'react-toastify/dist/ReactToastify.css'
+
 import './Login.css'
 
 export default function Login() {
