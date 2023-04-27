@@ -1,25 +1,50 @@
-.main_wrapper {
+
+  .body1{
+    background: linear-gradient(120deg, #43ba5e, #3fb09b);
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .center {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+  
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .image img {
+    width: 400px;
+    height: 100%;
+  }
+  
+  .main_wrapper {
     width: 100%;
-}
-.center h1 {
+  }
+  .center h1 {
     text-align: center;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     padding: 0 0 20px 0;
     border-bottom: 1px solid silver;
-}
-
-.center form {
+  }
+  
+  .center form {
     padding: 0 40px;
     box-sizing: border-box;
-}
-
-form .text_field {
+  }
+  
+  form .text_field {
     position: relative;
     border-bottom: 2px solid #adadad;
     margin: 30px 0;
-}
-
-.text_field input {
+  }
+  
+  .text_field input {
     width: 100%;
     padding: 0 5px;
     height: 40px;
@@ -27,10 +52,9 @@ form .text_field {
     border: none;
     background: none;
     outline: none;
-    color: #0f0f0f;
-}
-
-.text_field label {
+  }
+  
+  .text_field label {
     position: absolute;
     top: 50%;
     left: 5px;
@@ -39,9 +63,9 @@ form .text_field {
     font-size: 16px;
     pointer-events: none;
     transition: 0.5s;
-}
-
-.text_field span::before {
+  }
+  
+  .text_field span::before {
     content: "";
     position: absolute;
     top: 40px;
@@ -49,30 +73,29 @@ form .text_field {
     width: 0%;
     height: 2px;
     background: #43ba5e;
-}
-
-.text_field input:focus~label,
-.text_field input:valid~label {
+  }
+  
+  .text_field input:focus ~ label,
+  .text_field input:valid ~ label {
     top: -5px;
     color: #43ba5e;
-}
-
-.text_field input:focus~span::before,
-.text_field input:valid~span::before {
+  }
+  
+  .text_field input:focus ~ span::before,
+  .text_field input:valid ~ span::before {
     width: 100%;
-}
-
-.pass {
+  }
+  
+  .pass {
     margin: -5px 0 20px 5px;
     color: #a6a6a6;
     cursor: pointer;
-}
-
-.pass:hover {
+  }
+  .pass:hover {
     text-decoration: underline;
-}
-
-input[type="submit"] {
+  }
+  
+  input[type="submit"] {
     width: 100%;
     height: 50px;
     border: 1px solid;
@@ -83,25 +106,24 @@ input[type="submit"] {
     font-weight: 700;
     cursor: pointer;
     outline: none;
-}
-
-input[type="submit"] :hover {
+  }
+  
+  input[type="submit"] :hover {
     border-color: #2691d9;
     transition: 0.5s;
-}
-
-.signup_link {
+  }
+  
+  .signup_link {
     margin: 30px 0;
     text-align: center;
     font-size: 16px;
     color: #666666;
-}
-
-.signup_link a {
+  }
+  
+  .signup_link a {
     color: #43ba5e;
     text-decoration: none;
-}
-
-.signup_link a :hover {
+  }
+  .signup_link a :hover {
     text-decoration: underline;
-}
+  }
