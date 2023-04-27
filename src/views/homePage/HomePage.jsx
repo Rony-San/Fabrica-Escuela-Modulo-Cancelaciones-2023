@@ -8,7 +8,7 @@ export default function HomePage() {
       <div className="banner">
         <div className="desvanecido"></div>
         <div className="navbar">
-          <img src="/public/Home_Banner.jpeg" className="logo" alt="Banner" />
+          <img src="/public/Universidad_Logo.jpg" className="logo" alt="Banner" />
           <ul>
             <li>
               <NavLink to='/login'>Estudiantes</NavLink>

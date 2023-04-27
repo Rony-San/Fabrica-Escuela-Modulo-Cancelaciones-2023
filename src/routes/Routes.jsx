@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import ErrorPage from '../views/error/ErrorPage'
 import Default from '../views/default/Default'
-// import Header from '../views/layouts/header/Header'
 import Login from '../views/login/Login'
 import HomePage from '../views/homePage/homePage'
 

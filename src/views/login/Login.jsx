@@ -6,6 +6,7 @@ import './Login.css'
 
 export default function Login() {
   return (
+    <div className = 'body1'>
     <div className='center'>
       <div className='image'>
         <img src='/public/backgroundLogin.jpg' alt='udea' />
@@ -13,6 +14,8 @@ export default function Login() {
       <FormLogin />
       <ToastContainer position="top-left" autoClose={4000} />
     </div>
+    </div>
+
     
   )
 }
