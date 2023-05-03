@@ -1,0 +1,450 @@
+:root {
+    --Verde-oscuro: #026937;
+    --Verde: #35944b;
+    --Verde-claro: #43b649;
+    --Verde-amarillo: #8dc63f;
+    --Verde-azul-claro: #3ebdac;
+    --Verde-azul: #069a7e;
+    --Verde-azul-oscuro: #0e7774;
+    --Morado: #70205b;
+    --Azul: #137598;
+    --Rojo: #ef434d;
+    --Naranja: #f9a12c;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  h2 {
+    color: var(--Verde);
+    font-weight: 400;
+  }
+  .bannerCancelacion {
+    width: 100%;
+    height: 100vh;
+    background-color: #e8e8e8;
+  }
+  
+  .navbar {
+    padding: 0px 15%;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+  }
+  
+  .navbar_line {
+    height: 2px;
+    background-color: var(--Verde-azul-claro);
+    margin-left: 18%;
+    margin-right: 18%;
+  }
+  .logo {
+    width: 70px;
+    cursor: pointer;
+    position: relative;
+  }
+  .navbar h2 {
+    margin-right: auto;
+    margin-left: 25px;
+  }
+  
+  .navbar ul li {
+    list-style: none;
+    display: inline-flex;
+    margin: 0 20px;
+  
+    color: #43ba5e;
+    font-weight: 400;
+  }
+  .navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    color: var(--Verde);
+    font-weight: 400;
+  }
+  .navbar ul li a:hover {
+    color: white;
+    background: var(--Verde-azul-claro);
+    border-radius: 5px;
+  }
+  
+  .navbar ul li button {
+    background-color: var(--Naranja);
+    color: white;
+    padding: 20px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .secondary_nav {
+    background-color: #6da243;
+    height: 7%;
+    display: flex;
+  
+    margin-left: 18%;
+    margin-right: 18%;
+  }
+  
+  .secondary_nav_line {
+    height: 1%;
+    background-color: var(--Verde-amarillo);
+    margin-left: 18%;
+    margin-right: 18%;
+  }
+  .secondary_nav div {
+    width: 25%;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .secondary_nav h4 {
+    width: 50%;
+    color: white;
+    text-align: center;
+  }
+  .secondary_nav .first_e {
+    cursor: pointer;
+    background-color: var(--Verde-amarillo);
+  }
+  .secondary_nav .second_e {
+    cursor: pointer;
+    background-color: var(--Verde-azul);
+  }
+  .secondary_nav .third_e {
+    cursor: pointer;
+    background-color: var(--Verde-azul-oscuro);
+  }
+  .secondary_nav .forth_e {
+    cursor: pointer;
+    background-color: var(--Verde-oscuro);
+  }
+  
+  .main_wrapper {
+    background-color: white;
+    display: flex;
+    height: 66%;
+    margin-left: 18%;
+    margin-right: 18%;
+  }
+  
+  .info {
+    background-color: #43ba5e;
+    height: 20%;
+    display: flex;
+  
+    margin-left: 18%;
+    margin-right: 18%;
+  }
+  .info .students_links {
+    padding: 10px 0 10px 0;
+    width: 33%;
+    background-color: var(--Morado);
+  }
+  
+  .info .teachers_links {
+    padding: 10px 0 10px 0;
+    background-color: var(--Rojo);
+    width: 34%;
+  }
+  .info .more_info {
+    padding: 10px 0 10px 0;
+    background-color: var(--Azul);
+    width: 33%;
+  }
+  
+  .info ul li {
+    width: 70%;
+    margin: 0 auto;
+  }
+  
+  .info ul li a h4 {
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .info ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .main_wrapper .left_menu {
+    margin: 25px;
+    background-color: rgb(235, 235, 235);
+    width: 20%;
+    height: 40%;
+    padding-top: 1%;
+  }
+  .main_wrapper .left_menu h3 {
+    width: 80%;
+    overflow: visible;
+    margin: 0 auto 0 auto;
+    color: #6da243;
+  }
+  .main_wrapper .left_menu p {
+    width: 80%;
+    text-decoration: underline;
+    margin: auto;
+    margin-top: 25px;
+    font-size: small;
+    cursor: pointer;
+  }
+  .main_wrapper .left_menu p:hover {
+    color: var(--Verde-oscuro);
+  }
+  
+  .form {
+    margin: 25px 25px 25px 0;
+    background-color: rgb(235, 235, 235);
+    width: 80%;
+  }
+  
+  .form .first_line_form {
+    display: flex;
+    /* background-color: #3fb09b; */
+    width: 100%;
+    height: 25%;
+  }
+  
+  .form .first_line_form .personal_information {
+    /* background-color: #43ba5e; */
+    margin-top: 5px;
+    width: 50%;
+    height: 100%;
+  }
+  
+  .personal_information ul li {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    font-size: small;
+    margin-top: 3%;
+  }
+  .personal_information ul span {
+    margin-left: 10px;
+  }
+  
+  .form .first_line_form .rules_information {
+    position: relative;
+    /* background: #ef434d; */
+    width: 50%;
+    height: 100%;
+  }
+  .form .first_line_form .rules_information .rules_rectangle {
+    background-color: var(--Naranja);
+    color: #e8e8e8;
+    font-size: larger;
+    font-weight: 700;
+    position: absolute;
+    height: 50px;
+    width: 50%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+  .form .first_line_form .rules_information .rules_circle {
+    color: #e8e8e8;
+    font-size: xx-large;
+    font-weight: 700;
+    background-color: var(--Verde-azul-claro);
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+  .cancellation_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cancellation_form table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  .cancellation_form td,
+  th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .cancellation_form thead th {
+    background-color: #137598;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .cancellation_form tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .cancellation_form input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .cancellation_form tbody tr:hover {
+    background-color: #fff;
+  }
+  
+  .cancellation_form .text-area {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    height: 70px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #069a7e;
+    font-size: 16px;
+    resize: none;
+  }
+  
+  .cancellation_form .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cancellation_form .send-button {
+    margin-top: 20px;
+    background-color: #35944b;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .secondary_form .send-button:hover {
+    background-color: #8dc63f;
+  }
+  
+  .secondary_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .secondary_form table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  .secondary_form td,
+  th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .secondary_form thead th {
+    background-color: #137598;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .secondary_form tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .secondary_form input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .secondary_form tbody tr:hover {
+    background-color: #fff;
+  }
+  
+  .secondary_form .button-container-2 {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .secondary_form .check-button {
+    margin-top: 20px;
+    background-color: #35944b;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .secondary_form .check-button:hover {
+    background-color: #8dc63f;
+  }
+  .close-modal {
+    position: absolute;
+    top: 1.2rem;
+    right: 2rem;
+    font-size: 5rem;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  .hidden {
+    display: none;
+  }
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+  
+    background-color: white;
+    padding: 6rem;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+  }

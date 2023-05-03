@@ -4,6 +4,7 @@ import ErrorPage from '../views/error/ErrorPage'
 import Default from '../views/default/Default'
 import Login from '../views/login/Login'
 import HomePage from '../views/homePage/homePage'
+import CancelacionCurso from '../views/cancenlacionCurso/CancelacionCurso'
 
 export default function MainRoutes() {
   return (
@@ -14,6 +15,7 @@ export default function MainRoutes() {
           <Route path='home' element={<HomePage/>} />
           <Route path='default' element={<Default />} />
           <Route path='login' element={ <Login /> } />
+          <Route path='cancelacionCurso' element={<CancelacionCurso />} />
         </Route>
         <Route path='*' element={<ErrorPage />} />
       </Routes>
