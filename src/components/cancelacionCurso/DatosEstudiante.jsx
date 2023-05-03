@@ -1,5 +1,4 @@
 import React from "react";
-import './CancelacionCurso.css'
 
 export default function DatosEstudiante() {
   return (

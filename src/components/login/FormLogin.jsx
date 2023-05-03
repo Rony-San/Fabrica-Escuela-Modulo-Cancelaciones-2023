@@ -1,4 +1,3 @@
-import './FormLogin.css'
 import React, {useState, useEffect} from 'react'
 import useFormData from './useFormData';
 import { toast } from 'react-toastify';
@@ -34,7 +33,7 @@ export default function FormLogin() {
       const jsonString = JSON.stringify(data);
       const found = users.some(data => JSON.stringify(data) === jsonString);
       if(found){
-        navegate("/")
+        navegate("/cancelacionCurso")
       }else{
         toast.error('Acceso denegado')
       }

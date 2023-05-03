@@ -7,7 +7,7 @@
   .banner {
     width: 100%;
     height: 100vh;
-    background-image: url(public/Home_Banner.jpeg);
+    background-image: url(/Home_Banner.jpeg);
     background-size: cover;
     background-position: center;
   }
@@ -22,7 +22,7 @@
     height: 20vh;
   }
   
-  .navbar {
+  .navbar_home {
     width: 85%;
     margin: auto;
     padding: 0 0;
@@ -31,19 +31,19 @@
     justify-content: space-between;
   }
   
-  .navbar ul li {
+  .navbar_home ul li {
     list-style: none;
     display: inline-block;
     margin: 0 20px;
     position: relative;
   }
   
-  .navbar ul li a {
+  .navbar_home ul li a {
     text-decoration: none;
     color: #fff;
     text-transform: uppercase;
   }
-  .navbar ul li::after {
+  .navbar_home ul li::after {
     content: "";
     height: 3px;
     width: 0;
@@ -54,10 +54,10 @@
     transition: 0.5s;
   }
   
-  .navbar ul li:hover::after {
+  .navbar_home ul li:hover::after {
     width: 100%;
   }
-  .logo {
+  .logo_home {
     width: 80px;
     cursor: pointer;
     position: relative;

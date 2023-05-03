@@ -1,11 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './NavBar.css'
 
 export default function NavBar({usuario}) {
   return (
     <>
-    <div className="navbar">
+    <div className="navbar_cancelacion">
     <img src="Universidad_Logo.jpg" className="logo" alt="" />
     <h2>Universidad de Antioquia</h2>
     <ul>
@@ -15,7 +14,7 @@ export default function NavBar({usuario}) {
       </li>
     </ul>
   </div>
-  <div className="navbar_line"></div>
+  <div className="navbar_cancelacion_line"></div>
   <div className="secondary_nav">
     <div className="first_e" id="first_e"><h4>Cancelación de curso</h4></div>
     <div className="second_e" id="second_e">

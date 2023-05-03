@@ -1,5 +1,4 @@
 import React from "react";
-import '../cancelacionCurso/CancelacionCurso.css'
 import { NavLink } from "react-router-dom";
 
 export default function Menu() {

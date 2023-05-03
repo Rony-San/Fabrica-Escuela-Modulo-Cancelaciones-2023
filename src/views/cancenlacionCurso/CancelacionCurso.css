@@ -11,7 +11,7 @@
     --Rojo: #ef434d;
     --Naranja: #f9a12c;
   }
-  * {
+  .body_cancelacion {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@
     background-color: #e8e8e8;
   }
   
-  .navbar {
+  .navbar_cancelacion {
     padding: 0px 15%;
     width: 100%;
     margin: auto;
@@ -37,7 +37,7 @@
     background-color: white;
   }
   
-  .navbar_line {
+  .navbar_cancelacion_line {
     height: 2px;
     background-color: var(--Verde-azul-claro);
     margin-left: 18%;
@@ -48,12 +48,12 @@
     cursor: pointer;
     position: relative;
   }
-  .navbar h2 {
+  .navbar_cancelacion h2 {
     margin-right: auto;
     margin-left: 25px;
   }
   
-  .navbar ul li {
+  .navbar_cancelacion ul li {
     list-style: none;
     display: inline-flex;
     margin: 0 20px;
@@ -61,20 +61,20 @@
     color: #43ba5e;
     font-weight: 400;
   }
-  .navbar ul li a {
+  .navbar_cancelacion ul li a {
     text-decoration: none;
     color: #fff;
     text-transform: uppercase;
     color: var(--Verde);
     font-weight: 400;
   }
-  .navbar ul li a:hover {
+  .navbar_cancelacion ul li a:hover {
     color: white;
     background: var(--Verde-azul-claro);
     border-radius: 5px;
   }
   
-  .navbar ul li button {
+  .navbar_cancelacion ul li button {
     background-color: var(--Naranja);
     color: white;
     padding: 20px 20px;
@@ -127,7 +127,7 @@
     background-color: var(--Verde-oscuro);
   }
   
-  .main_wrapper {
+  .main_wrapper_form_cursos {
     background-color: white;
     display: flex;
     height: 66%;
@@ -178,20 +178,20 @@
     text-align: center;
   }
   
-  .main_wrapper .left_menu {
+  .main_wrapper_form_cursos .left_menu {
     margin: 25px;
     background-color: rgb(235, 235, 235);
     width: 20%;
     height: 40%;
     padding-top: 1%;
   }
-  .main_wrapper .left_menu h3 {
+  .main_wrapper_form_cursos .left_menu h3 {
     width: 80%;
     overflow: visible;
     margin: 0 auto 0 auto;
     color: #6da243;
   }
-  .main_wrapper .left_menu p {
+  .main_wrapper_form_cursos .left_menu p {
     width: 80%;
     text-decoration: underline;
     margin: auto;
@@ -199,7 +199,7 @@
     font-size: small;
     cursor: pointer;
   }
-  .main_wrapper .left_menu p:hover {
+  .main_wrapper_form_cursos .left_menu p:hover {
     color: var(--Verde-oscuro);
   }
   

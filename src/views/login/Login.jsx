@@ -2,8 +2,6 @@ import FormLogin from '../../components/login/FormLogin'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import './Login.css'
-
 export default function Login() {
   return (
     <div className = 'body1'>

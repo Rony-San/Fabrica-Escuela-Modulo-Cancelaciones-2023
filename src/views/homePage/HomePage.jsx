@@ -1,5 +1,4 @@
 import React from "react";
-import './HomePage.css';
 import {NavLink}from "react-router-dom";
 
 export default function HomePage() {
@@ -7,8 +6,8 @@ export default function HomePage() {
     <>
       <div className="banner">
         <div className="desvanecido"></div>
-        <div className="navbar">
-          <img src="/public/Universidad_Logo.jpg" className="logo" alt="Banner" />
+        <div className="navbar_home">
+          <img src="/Universidad_Logo.jpg" className="logo_home" alt="Banner" />
           <ul>
             <li>
               <NavLink to='/login'>Estudiantes</NavLink>
