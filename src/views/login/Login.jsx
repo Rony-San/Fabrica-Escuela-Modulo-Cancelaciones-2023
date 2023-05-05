@@ -1,14 +1,19 @@
 import FormLogin from '../../components/login/FormLogin'
-//import backgroundLogin from '../../assets/images/backgroundLogin.jpg'
-import './Login.css'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Login() {
   return (
-    <div class='center'>
-      <div class='image'>
-        <img src='/imgs/backgroundLogin.jpg' alt='' />
+    <div className = 'body1'>
+    <div className='center'>
+      <div className='image'>
+        <img src='/public/imgs/backgroundLogin.jpg' alt='udea' />
       </div>
       <FormLogin />
+      <ToastContainer position="top-left" autoClose={4000} />
     </div>
+    </div>
+
+    
   )
 }
