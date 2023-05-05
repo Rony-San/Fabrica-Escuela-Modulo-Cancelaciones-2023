@@ -48,7 +48,12 @@ h2 {
   cursor: pointer;
   position: relative;
 }
-.navbar_cancelacion h2 {
+.navbar_cancelacion .uni_name_link {
+  text-decoration: none;
+  font-size: x-large;
+  list-style: none;
+  color: var(--Verde);
+  font-weight: 400;
   margin-right: auto;
   margin-left: 25px;
 }
@@ -162,6 +167,7 @@ h2 {
 }
 
 .info ul li {
+  list-style-type: none;
   width: 70%;
   margin: 0 auto;
 }
@@ -192,7 +198,11 @@ h2 {
   margin: 0 auto 0 auto;
   color: #6da243;
 }
-.main_wrapper_form_cursos .left_menu p {
+.main_wrapper_form_cursos .left_menu .register,
+.main_wrapper_form_cursos .left_menu .pending {
+  display: block;
+  color: var(--Verde-oscuro);
+  text-decoration: none;
   width: 80%;
   text-decoration: underline;
   margin: auto;
@@ -358,6 +368,11 @@ th {
   flex-direction: column;
   align-items: center;
 }
+
+.secondary_form h2 {
+  margin-top: 20px;
+  text-align: left;
+}
 .secondary_form table {
   border-collapse: collapse;
   width: 80%;
@@ -399,7 +414,8 @@ th {
   justify-content: center;
 }
 
-.secondary_form .check-button {
+.secondary_form .check-button,
+.delete-button {
   margin-top: 20px;
   background-color: #35944b;
   color: white;
@@ -409,10 +425,18 @@ th {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin: 25px;
+}
+
+.secondary_form .delete-button {
+  background-color: crimson;
 }
 
 .secondary_form .check-button:hover {
   background-color: #8dc63f;
+}
+.secondary_form .delete-button:hover {
+  background-color: var(--Rojo);
 }
 .close-modal {
   position: absolute;
