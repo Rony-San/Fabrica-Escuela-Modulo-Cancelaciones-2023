@@ -3,7 +3,7 @@ import Navbar from "../../components/navBar/NavBar";
 import Menu from "../../components/menu/Menu";
 import DatosEstudiante from "../../components/cancelacionCurso/DatosEstudiante";
 import CancelacionesEnviadas from "../../components/cancelacionesEnviadas/CancelacionesEnviadas";
-import Footer from "../../components/Footer/footer";
+import Footer from "../../components/Footer/Footer";
 const CancelacionesPendientes = () => {
   return (
     <div className="body_cancelacion">
