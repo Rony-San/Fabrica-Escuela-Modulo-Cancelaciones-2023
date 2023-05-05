@@ -7,7 +7,7 @@ export default function Login() {
     <div className = 'body1'>
     <div className='center'>
       <div className='image'>
-        <img src='/public/imgs/backgroundLogin.jpg' alt='udea' />
+        <img src='/imgs/backgroundLogin.jpg' alt='udea' />
       </div>
       <FormLogin />
       <ToastContainer position="top-left" autoClose={4000} />
