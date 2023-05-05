@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
 export default function FormularioCancelacion() {
   return (
     <>
-      <div className="cancellation_form">
+      <div className='cancellation_form'>
         <table>
           <thead>
             <tr>
@@ -20,7 +20,7 @@ export default function FormularioCancelacion() {
           <tbody>
             <tr>
               <td>
-                <input type="checkbox" />
+                <input type='checkbox' />
               </td>
               <td>Dato 1</td>
               <td>Dato 2</td>
@@ -32,7 +32,7 @@ export default function FormularioCancelacion() {
             </tr>
             <tr>
               <td>
-                <input type="checkbox" />
+                <input type='checkbox' />
               </td>
               <td>Dato 1</td>
               <td>Dato 2</td>
@@ -44,7 +44,7 @@ export default function FormularioCancelacion() {
             </tr>
             <tr>
               <td>
-                <input type="checkbox" />
+                <input type='checkbox' />
               </td>
               <td>Dato 1</td>
               <td>Dato 2</td>
@@ -57,13 +57,13 @@ export default function FormularioCancelacion() {
           </tbody>
         </table>
         <textarea
-          className="text-area"
-          placeholder="Ingresa la Justificación."
+          className='text-area'
+          placeholder='Ingresa la Justificación.'
         ></textarea>
-        <div className="button-container">
-          <button className="send-button">Enviar Cancelación</button>
+        <div className='button-container'>
+          <button className='send-button'>Enviar Cancelación</button>
         </div>
       </div>
     </>
-  );
+  )
 }

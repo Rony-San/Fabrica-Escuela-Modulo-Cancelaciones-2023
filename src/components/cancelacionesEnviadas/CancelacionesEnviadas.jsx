@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
 const CancelacionesEnviadas = () => {
   return (
-    <div class="secondary_form ">
+    <div class='secondary_form '>
       <h2>Historial de cancelaciones</h2>
 
       <table>
@@ -18,7 +18,7 @@ const CancelacionesEnviadas = () => {
         <tbody>
           <tr>
             <td>
-              <input type="checkbox" />
+              <input type='checkbox' />
             </td>
             <td>Dato 1</td>
             <td>Dato 2</td>
@@ -27,7 +27,7 @@ const CancelacionesEnviadas = () => {
           </tr>
           <tr>
             <td>
-              <input type="checkbox" />
+              <input type='checkbox' />
             </td>
             <td>Dato 1</td>
             <td>Dato 2</td>
@@ -37,13 +37,13 @@ const CancelacionesEnviadas = () => {
         </tbody>
       </table>
 
-      <div class="button-container-2">
-        <button class="check-button">Enviar Cancelación</button>
+      <div class='button-container-2'>
+        <button class='check-button'>Enviar Cancelación</button>
 
-        <button class="delete-button">Enviar Cancelación</button>
+        <button class='delete-button'>Enviar Cancelación</button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CancelacionesEnviadas;
+export default CancelacionesEnviadas
