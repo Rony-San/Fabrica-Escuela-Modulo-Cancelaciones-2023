@@ -14,7 +14,9 @@ export default function FormLogin() {
   },{
     "user": "jeison",
     "password": "123"
-  }]
+  },{
+    "user": "alejandro",
+    "password": "123"}]
 
   const navegate = useNavigate();
   const {form, formData, updateFormData} = useFormData();
