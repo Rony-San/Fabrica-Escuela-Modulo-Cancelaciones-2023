@@ -1,6 +1,10 @@
 import React from "react";
+import { useState } from "react";
+import ModalReglamento from "../Modals/ModalReglamento";
+import { Button } from "@mui/material";
 
 export default function DatosEstudiante() {
+  const [mostrarAd, setMostrarAd] = useState(false);
   return (
     <>
       <div className="first_line_form">
@@ -25,10 +29,11 @@ export default function DatosEstudiante() {
           </ul>
         </div>
         <div className="rules_information">
-          <div className="rules_rectangle show-modal">Reglamento</div>
+          <Button className="rules_rectangle show-modal" onClick={()=>setMostrarAd(true)}>Reglamento</Button>
           <div className="rules_circle show-modal">i</div>
         </div>
       </div>
+      <ModalReglamento mostrarAd={mostrarAd} setMostrarAd={setMostrarAd} />
     </>
   );
 }
