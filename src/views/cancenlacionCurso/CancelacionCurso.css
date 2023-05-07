@@ -11,16 +11,19 @@
   --Rojo: #ef434d;
   --Naranja: #f9a12c;
 }
+
 .body_cancelacion {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
+
 h2 {
   color: var(--Verde);
   font-weight: 400;
 }
+
 .bannerCancelacion {
   width: 100%;
   height: 100vh;
@@ -43,11 +46,13 @@ h2 {
   margin-left: 18%;
   margin-right: 18%;
 }
+
 .logo {
   width: 70px;
   cursor: pointer;
   position: relative;
 }
+
 .navbar_cancelacion .uni_name_link {
   text-decoration: none;
   font-size: x-large;
@@ -66,13 +71,15 @@ h2 {
   color: #43ba5e;
   font-weight: 400;
 }
+
 .navbar_cancelacion ul li a {
   text-decoration: none;
-  color: #fff;
+  /* color: #fff; */
   text-transform: uppercase;
   color: var(--Verde);
   font-weight: 400;
 }
+
 .navbar_cancelacion ul li a:hover {
   color: white;
   background: var(--Verde-azul-claro);
@@ -88,6 +95,7 @@ h2 {
   cursor: pointer;
   font-size: 16px;
 }
+
 .secondary_nav {
   background-color: #6da243;
   height: 7%;
@@ -103,6 +111,7 @@ h2 {
   margin-left: 18%;
   margin-right: 18%;
 }
+
 .secondary_nav div {
   width: 25%;
 
@@ -110,23 +119,28 @@ h2 {
   align-items: center;
   justify-content: center;
 }
+
 .secondary_nav h4 {
   width: 50%;
   color: white;
   text-align: center;
 }
+
 .secondary_nav .first_e {
   cursor: pointer;
   background-color: var(--Verde-amarillo);
 }
+
 .secondary_nav .second_e {
   cursor: pointer;
   background-color: var(--Verde-azul);
 }
+
 .secondary_nav .third_e {
   cursor: pointer;
   background-color: var(--Verde-azul-oscuro);
 }
+
 .secondary_nav .forth_e {
   cursor: pointer;
   background-color: var(--Verde-oscuro);
@@ -149,6 +163,7 @@ h2 {
   margin-left: 18%;
   margin-right: 18%;
 }
+
 .info .students_links {
   padding: 10px 0 10px 0;
   width: 33%;
@@ -160,6 +175,7 @@ h2 {
   background-color: var(--Rojo);
   width: 34%;
 }
+
 .info .more_info {
   padding: 10px 0 10px 0;
   background-color: var(--Azul);
@@ -192,17 +208,19 @@ h2 {
   height: 40%;
   padding-top: 1%;
 }
+
 .main_wrapper_form_cursos .left_menu h3 {
   width: 80%;
   overflow: visible;
   margin: 0 auto 0 auto;
   color: #6da243;
 }
+
 .main_wrapper_form_cursos .left_menu .register,
 .main_wrapper_form_cursos .left_menu .pending {
   display: block;
   color: var(--Verde-oscuro);
-  text-decoration: none;
+  /* text-decoration: none; */
   width: 80%;
   text-decoration: underline;
   margin: auto;
@@ -210,6 +228,7 @@ h2 {
   font-size: small;
   cursor: pointer;
 }
+
 .main_wrapper_form_cursos .left_menu p:hover {
   color: var(--Verde-oscuro);
 }
@@ -243,6 +262,7 @@ h2 {
   font-size: small;
   margin-top: 3%;
 }
+
 .personal_information ul span {
   margin-left: 10px;
 }
@@ -253,6 +273,7 @@ h2 {
   width: 50%;
   height: 100%;
 }
+
 .form .first_line_form .rules_information .rules_rectangle {
   background-color: var(--Naranja);
   color: #e8e8e8;
@@ -271,6 +292,7 @@ h2 {
   transform: translate(-50%, -50%);
   cursor: pointer;
 }
+
 .form .first_line_form .rules_information .rules_circle {
   color: #e8e8e8;
   font-size: xx-large;
@@ -289,11 +311,13 @@ h2 {
   transform: translate(-50%, -50%);
   cursor: pointer;
 }
+
 .cancellation_form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .cancellation_form table {
   border-collapse: collapse;
   width: 80%;
@@ -373,6 +397,7 @@ th {
   margin-top: 20px;
   text-align: left;
 }
+
 .secondary_form table {
   border-collapse: collapse;
   width: 80%;
@@ -416,7 +441,7 @@ th {
 
 .secondary_form .check-button,
 .delete-button {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   background-color: #35944b;
   color: white;
   font-size: 16px;
@@ -435,9 +460,11 @@ th {
 .secondary_form .check-button:hover {
   background-color: #8dc63f;
 }
+
 .secondary_form .delete-button:hover {
   background-color: var(--Rojo);
 }
+
 .close-modal {
   position: absolute;
   top: 1.2rem;
@@ -448,9 +475,11 @@ th {
   border: none;
   background: none;
 }
+
 .hidden {
   display: none;
 }
+
 .modal {
   position: absolute;
   top: 50%;
