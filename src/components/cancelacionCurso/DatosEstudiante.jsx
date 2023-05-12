@@ -1,10 +1,29 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ModalReglamento from '../Modals/ModalReglamento'
 import { Button } from '@mui/material'
+import axios from 'axios'
 
 export default function DatosEstudiante() {
   const [mostrarAd, setMostrarAd] = useState(false)
+
+  //Consumo de la Api-rest
+  const [usuario, setUsuario] = useState([])
+  const fetchData = () => {
+    return axios.get('http://localhost:8080/api/estudiante/find-estudiante-by-documento/992023')
+    .then((response) => {
+      setUsuario(response.data)
+    })
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  //Fecha
+  let today = new Date();
+  let now = today.toLocaleDateString('en-US');
+
   return (
     <>
       <div className='first_line_form'>
@@ -12,11 +31,11 @@ export default function DatosEstudiante() {
           <ul className='student_information'>
             <li>
               <p>Fecha:</p>
-              <span>...</span>
+              <span>{now}</span>
             </li>
             <li>
               <p>Estuadiante:</p>
-              <span>...</span>
+              <span>{usuario.nombre} {usuario.apellido}</span>
             </li>
             <li>
               <p>Programa:</p>
