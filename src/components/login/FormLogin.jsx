@@ -65,7 +65,7 @@ export default function FormLogin() {
           if (response.data.mensaje === 'El usuario no existe') {
             toast.error('El usuario no existe')
           } else if (response.data.mensaje === 'El login fue exitoso') {
-            navegate("/cancelacionCurso")
+            navegate("/cancelacionCurso/"+usuario)
           } else {
             toast.error('Usuario o contraseña incorrectos')
           }

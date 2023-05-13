@@ -3,14 +3,17 @@ import { useState, useEffect } from 'react'
 import ModalReglamento from '../Modals/ModalReglamento'
 import { Button } from '@mui/material'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 export default function DatosEstudiante() {
   const [mostrarAd, setMostrarAd] = useState(false)
 
   //Consumo de la Api-rest
   const [usuario, setUsuario] = useState([])
+  const { user } = useParams()
+
   const fetchData = () => {
-    return axios.get('http://localhost:8080/api/estudiante/find-estudiante-by-documento/992023')
+    return axios.get('http://localhost:8080/api/estudiante/find-estudiante-by-usuario/'+user)
     .then((response) => {
       setUsuario(response.data)
     })

@@ -1,6 +1,23 @@
 import React from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 export default function FormularioCancelacion() {
+
+  const [materias, setMaterias] = useState([])
+
+  const fetchData = () => {
+    return axios.get('http://localhost:8080/api/materia/find-all')
+      .then((response) => {
+        setMaterias(response.data)
+      })
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
     <>
       <div className='cancellation_form'>
@@ -18,42 +35,23 @@ export default function FormularioCancelacion() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <input type='checkbox' />
-              </td>
-              <td>Dato 1</td>
-              <td>Dato 2</td>
-              <td>Dato 3</td>
-              <td>Dato 4</td>
-              <td>Dato 5</td>
-              <td>Dato 6</td>
-              <td>Dato 7</td>
-            </tr>
-            <tr>
-              <td>
-                <input type='checkbox' />
-              </td>
-              <td>Dato 1</td>
-              <td>Dato 2</td>
-              <td>Dato 3</td>
-              <td>Dato 4</td>
-              <td>Dato 5</td>
-              <td>Dato 6</td>
-              <td>Dato 7</td>
-            </tr>
-            <tr>
-              <td>
-                <input type='checkbox' />
-              </td>
-              <td>Dato 1</td>
-              <td>Dato 2</td>
-              <td>Dato 3</td>
-              <td>Dato 4</td>
-              <td>Dato 5</td>
-              <td>Dato 6</td>
-              <td>Dato 7</td>
-            </tr>
+            {
+              materias.map(materia => (
+                <tr key={materia.idMateria}>
+                  <td>
+                    <input type='checkbox' />
+                  </td>
+                  <td>{materia.nombre}</td>
+                  <td>202568</td>
+                  <td>{materia.creditos}</td>
+                  <td>05</td>
+                  <td>NA</td>
+                  <td>60</td>
+                  <td>2.3</td>
+                </tr>
+              ))
+            }
+            
           </tbody>
         </table>
         <textarea
