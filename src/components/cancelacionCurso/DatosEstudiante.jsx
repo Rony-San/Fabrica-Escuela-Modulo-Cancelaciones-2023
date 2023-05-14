@@ -24,8 +24,12 @@ export default function DatosEstudiante() {
   }, [])
 
   //Fecha
-  let today = new Date();
-  let now = today.toLocaleDateString('en-US');
+  const today = new Date();
+  const now = today.toLocaleDateString('en-US');
+
+  //Datos temporales
+  const programa = 'Ingeniería de sistemas'
+  const semestre = '5'
 
   return (
     <>
@@ -42,11 +46,11 @@ export default function DatosEstudiante() {
             </li>
             <li>
               <p>Programa:</p>
-              <span>...</span>
+              <span>{programa}</span>
             </li>
             <li>
               <p>Semestre:</p>
-              <span>...</span>
+              <span>{semestre}</span>
             </li>
           </ul>
         </div>

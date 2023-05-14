@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 
 export default function FormularioCancelacion() {
 
+
+  //Carga las materias de un estudiante
   const [materias, setMaterias] = useState([])
 
   const fetchData = () => {
@@ -17,6 +19,40 @@ export default function FormularioCancelacion() {
   useEffect(() => {
     fetchData()
   }, [])
+  //--------------------------------------
+
+  //Envia los datos de una solicitud al backend
+  const [idMateria, setIdMateria] = useState(null)
+  const [motivo, setMotivo] = useState('')
+  
+  const handleCheckboxChange = (event, key) => {
+    const isChecked = event.target.checked
+    if (isChecked) {
+      setIdMateria(key)
+    } else {
+      setIdMateria(null)
+    }
+  }
+
+
+  async function cancelacionCurso(event) {
+    event.preventDefault()
+    try {
+      await axios.post("http://localhost:8080/api/cancel-courses-api",
+        {
+          idMateria: idMateria,
+          motivo: motivo,
+        }).then((response) => {
+          //toast.error('Usuario o contraseña incorrectos')
+          console.log(response.data) 
+        }, fail => {
+          console.error(fail)
+        })
+    } catch (error) {
+      alert(error)
+    }
+  }
+  //--------------------------------------
 
   return (
     <>
@@ -36,10 +72,13 @@ export default function FormularioCancelacion() {
           </thead>
           <tbody>
             {
-              materias.map(materia => (
+              materias.length > 0 && materias.map(materia => (
                 <tr key={materia.idMateria}>
                   <td>
-                    <input type='checkbox' />
+                    <input type='checkbox' 
+                      onChange={(event) => handleCheckboxChange(event, materia.idMateria)}
+                      checked={idMateria === materia.idMateria}
+                    />
                   </td>
                   <td>{materia.nombre}</td>
                   <td>202568</td>
@@ -57,9 +96,14 @@ export default function FormularioCancelacion() {
         <textarea
           className='text-area'
           placeholder='Ingresa la Justificación.'
+          required
+          value={motivo}
+            onChange={(event) => {
+              setMotivo(event.target.value);
+            }}
         ></textarea>
         <div className='button-container'>
-          <button className='send-button'>Enviar Cancelación</button>
+          <button className='send-button' disabled={!idMateria} onClick={cancelacionCurso}>Enviar Cancelación</button>
         </div>
       </div>
     </>
