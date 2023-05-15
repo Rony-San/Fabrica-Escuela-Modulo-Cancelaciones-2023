@@ -12,20 +12,30 @@ export default function DatosEstudiante() {
   const [usuario, setUsuario] = useState([])
   const { user } = useParams()
 
-  const fetchData = () => {
-    return axios.get('http://localhost:8080/api/estudiante/find-estudiante-by-usuario/'+user)
-    .then((response) => {
-      setUsuario(response.data)
-    })
+  const fetchData = async () => {
+    return axios
+      .get(
+        'http://localhost:8080/api/estudiante/find-estudiante-by-usuario/' +
+          user
+      )
+      .then((response) => {
+        setUsuario(response.data)
+      })
   }
 
   useEffect(() => {
     fetchData()
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [])
 
   //Fecha
-  const today = new Date();
-  const now = today.toLocaleDateString('en-US');
+  const today = new Date()
+  const now = today.toLocaleDateString('en-US')
 
   //Datos temporales
   const programa = 'Ingeniería de sistemas'
@@ -42,7 +52,9 @@ export default function DatosEstudiante() {
             </li>
             <li>
               <p>Estuadiante:</p>
-              <span>{usuario.nombre} {usuario.apellido}</span>
+              <span>
+                {usuario.nombre} {usuario.apellido}
+              </span>
             </li>
             <li>
               <p>Programa:</p>

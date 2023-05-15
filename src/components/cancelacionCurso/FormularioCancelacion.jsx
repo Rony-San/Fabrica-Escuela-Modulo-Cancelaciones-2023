@@ -4,27 +4,31 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 export default function FormularioCancelacion() {
-
-
   //Carga las materias de un estudiante
   const [materias, setMaterias] = useState([])
 
-  const fetchData = () => {
-    return axios.get('http://localhost:8080/api/materia/find-all')
+  const fetchData = async () => {
+    return axios
+      .get('http://localhost:8080/api/materia/find-all')
       .then((response) => {
         setMaterias(response.data)
       })
   }
 
-  useEffect(() => {
-    fetchData()
+  useEffect(async () => {
+    try {
+      const response = await fetchData()
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
   }, [])
   //--------------------------------------
 
   //Envia los datos de una solicitud al backend
   const [idMateria, setIdMateria] = useState(null)
   const [motivo, setMotivo] = useState('')
-  
+
   const handleCheckboxChange = (event, key) => {
     const isChecked = event.target.checked
     if (isChecked) {
@@ -34,23 +38,36 @@ export default function FormularioCancelacion() {
     }
   }
 
-
-  async function cancelacionCurso(event) {
-    event.preventDefault()
+  async function cancelacionCurso() {
     try {
-      await axios.post("http://localhost:8080/api/cancel-courses-api",
-        {
+      await axios
+        .post('http://localhost:8080/api/cancel-courses-api', {
           idMateria: idMateria,
-          motivo: motivo,
-        }).then((response) => {
-          //toast.error('Usuario o contraseña incorrectos')
-          console.log(response.data) 
-        }, fail => {
-          console.error(fail)
+          motivo: motivo
         })
+        .then(
+          (response) => {
+            //toast.error('Usuario o contraseña incorrectos')
+            console.log(response.data)
+          },
+          (fail) => {
+            console.error(fail)
+          }
+        )
     } catch (error) {
       alert(error)
     }
+  }
+
+  const handleCancelacionCurso = (event) => {
+    event.preventDefault()
+    cancelacionCurso()
+      .then(() => {
+        console.log('Cancelación enviada')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
   //--------------------------------------
 
@@ -71,12 +88,15 @@ export default function FormularioCancelacion() {
             </tr>
           </thead>
           <tbody>
-            {
-              materias.length > 0 && materias.map(materia => (
+            {materias.length > 0 &&
+              materias.map((materia) => (
                 <tr key={materia.idMateria}>
                   <td>
-                    <input type='checkbox' 
-                      onChange={(event) => handleCheckboxChange(event, materia.idMateria)}
+                    <input
+                      type='checkbox'
+                      onChange={(event) =>
+                        handleCheckboxChange(event, materia.idMateria)
+                      }
                       checked={idMateria === materia.idMateria}
                     />
                   </td>
@@ -88,9 +108,7 @@ export default function FormularioCancelacion() {
                   <td>60</td>
                   <td>2.3</td>
                 </tr>
-              ))
-            }
-            
+              ))}
           </tbody>
         </table>
         <textarea
@@ -98,12 +116,18 @@ export default function FormularioCancelacion() {
           placeholder='Ingresa la Justificación.'
           required
           value={motivo}
-            onChange={(event) => {
-              setMotivo(event.target.value);
-            }}
+          onChange={(event) => {
+            setMotivo(event.target.value)
+          }}
         ></textarea>
         <div className='button-container'>
-          <button className='send-button' disabled={!idMateria} onClick={cancelacionCurso}>Enviar Cancelación</button>
+          <button
+            className='send-button'
+            disabled={!idMateria}
+            onClick={handleCancelacionCurso}
+          >
+            Enviar Cancelación
+          </button>
         </div>
       </div>
     </>
