@@ -15,13 +15,8 @@ export default function FormularioCancelacion() {
       })
   }
 
-  useEffect(async () => {
-    try {
-      const response = await fetchData()
-      console.log(response)
-    } catch (error) {
-      console.log(error)
-    }
+  useEffect(() => {
+    fetchData().then(response => console.log(response)).catch(error => console.log(error))
   }, [])
   //--------------------------------------
 
