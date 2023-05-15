@@ -16,7 +16,8 @@ export default function MainRoutes() {
           <Route path='home' element={<HomePage />} />
           <Route path='default' element={<Default />} />
           <Route path='login' element={<Login />} />
-          <Route path='cancelacionCurso' element={<CancelacionCurso />} />
+          <Route path='cancelacionCurso/:user' element={<CancelacionCurso />} />
+          
           <Route
             path='cancelacionesPendientes'
             element={<CancelacionesPendientes />}
