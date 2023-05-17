@@ -23,6 +23,7 @@ export default function FormularioCancelacion() {
   //Envia los datos de una solicitud al backend
   const [idMateria, setIdMateria] = useState(null)
   const [motivo, setMotivo] = useState('')
+  const {user} = useParams()
 
   const handleCheckboxChange = (event, key) => {
     const isChecked = event.target.checked
@@ -38,7 +39,8 @@ export default function FormularioCancelacion() {
       await axios
         .post('http://localhost:8080/api/cancel-courses-api', {
           idMateria: idMateria,
-          motivo: motivo
+          motivo: motivo,
+          user: user
         })
         .then(
           (response) => {

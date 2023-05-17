@@ -35,7 +35,7 @@ export default function DatosEstudiante() {
 
   //Fecha
   const today = new Date()
-  const now = today.toLocaleDateString('en-US')
+  const now = today.toLocaleDateString('es-co')
 
   //Datos temporales
   const programa = 'Ingeniería de sistemas'
