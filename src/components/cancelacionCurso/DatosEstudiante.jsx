@@ -51,7 +51,7 @@ export default function DatosEstudiante() {
               <span>{now}</span>
             </li>
             <li>
-              <p>Estuadiante:</p>
+              <p>Estudiante:</p>
               <span>
                 {usuario.nombre} {usuario.apellido}
               </span>

@@ -32,12 +32,12 @@ export default function FormularioCancelacion() {
     } else {
       setIdMateria(null)
     }
-  }
+  } 
 
   async function cancelacionCurso() {
     try {
       await axios
-        .post('http://localhost:8080/api/cancel-courses-api', {
+        .post('http://localhost:8080/api/solicitud-cancelaciones/save', {
           idMateria: idMateria,
           motivo: motivo,
           user: user
