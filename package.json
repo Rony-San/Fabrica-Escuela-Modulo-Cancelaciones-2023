@@ -15,12 +15,15 @@
     "@emotion/styled": "^11.10.8",
     "@mui/material": "^5.12.3",
     "@reduxjs/toolkit": "^1.9.4",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
+    "react-slick": "^0.29.0",
     "react-toastify": "^9.1.2",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
