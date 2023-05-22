@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div class="info">
-      <div class="students_links">
+    <div className="info">
+      <div className="students_links">
         <ul>
           <li>
             <a href="#">
@@ -26,7 +26,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div class="teachers_links">
+      <div className="teachers_links">
         <ul>
           <li>
             <a href="#">
@@ -42,7 +42,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div class="more_info">
+      <div className="more_info">
         <ul>
           <li>
             <a href="#">

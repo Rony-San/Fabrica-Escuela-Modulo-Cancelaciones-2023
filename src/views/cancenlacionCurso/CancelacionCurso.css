@@ -11,7 +11,9 @@
   --Rojo: #ef434d;
   --Naranja: #f9a12c;
 }
-
+.links {
+  text-decoration: none !important;
+}
 .body_cancelacion {
   box-sizing: border-box;
   margin: 0;
@@ -248,6 +250,43 @@ h2 {
   height: 25%;
 }
 
+.form .slick-slide > div {
+  margin: 0 20px;
+}
+.form .slick-list {
+  margin: 0 -20px;
+}
+.form .teacher_signatures {
+  width: 80%;
+  /* margin-top: 50px; */
+  background-color: #e8e8e8;
+  height: 300px;
+  /*margin-top: 50px;*/
+  margin: 50px auto auto auto;
+}
+.form .teacher_signatures .slick-slide > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-color: rgba(0, 0, 0, 0.05);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  height: 300px;
+  border: #333;
+
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.slider_inner_block_teacher {
+  text-decoration: none;
+}
+.form .teacher_signatures .slick-slide > div:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .form .first_line_form .personal_information {
   /* background-color: #43ba5e; */
   margin-top: 5px;
@@ -311,11 +350,15 @@ h2 {
   transform: translate(-50%, -50%);
   cursor: pointer;
 }
-
-.cancellation_form {
+.form .cancellation_form,
+.cancellation_form_profesores {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
+}
+.form .cancellation_form_profesores h3 {
+  color: var(--Verde-azul-oscuro);
 }
 
 .cancellation_form table {
@@ -342,7 +385,7 @@ th {
   background-color: #f2f2f2;
 }
 
-.cancellation_form input[type="checkbox"] {
+.cancellation_form input[type='checkbox'] {
   margin: 0;
   padding: 0;
   width: 30px;
@@ -422,7 +465,7 @@ th {
   background-color: #f2f2f2;
 }
 
-.secondary_form input[type="checkbox"] {
+.secondary_form input[type='checkbox'] {
   margin: 0;
   padding: 0;
   width: 30px;

@@ -1,74 +1,76 @@
-import React from 'react'
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import React from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function FormularioCancelacion() {
   //Carga las materias de un estudiante
-  const [materias, setMaterias] = useState([])
+  const [materias, setMaterias] = useState([]);
 
   const fetchData = async () => {
     return axios
-      .get('http://localhost:8080/api/materia/find-all')
+      .get("http://localhost:8080/api/materia/find-all")
       .then((response) => {
-        setMaterias(response.data)
-      })
-  }
+        setMaterias(response.data);
+      });
+  };
 
   useEffect(() => {
-    fetchData().then(response => console.log(response)).catch(error => console.log(error))
-  }, [])
+    fetchData()
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  }, []);
   //--------------------------------------
 
   //Envia los datos de una solicitud al backend
-  const [idMateria, setIdMateria] = useState(null)
-  const [motivo, setMotivo] = useState('')
+  const [idMateria, setIdMateria] = useState(null);
+  const [motivo, setMotivo] = useState("");
 
   const handleCheckboxChange = (event, key) => {
-    const isChecked = event.target.checked
+    const isChecked = event.target.checked;
     if (isChecked) {
-      setIdMateria(key)
+      setIdMateria(key);
     } else {
-      setIdMateria(null)
+      setIdMateria(null);
     }
-  }
+  };
 
   async function cancelacionCurso() {
     try {
       await axios
-        .post('http://localhost:8080/api/cancel-courses-api', {
+        .post("http://localhost:8080/api/cancel-courses-api", {
           idMateria: idMateria,
-          motivo: motivo
+          motivo: motivo,
         })
         .then(
           (response) => {
             //toast.error('Usuario o contraseña incorrectos')
-            console.log(response.data)
+            console.log(response.data);
           },
           (fail) => {
-            console.error(fail)
+            console.error(fail);
           }
-        )
+        );
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   }
 
   const handleCancelacionCurso = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     cancelacionCurso()
       .then(() => {
-        console.log('Cancelación enviada')
+        console.log("Cancelación enviada");
       })
       .catch((error) => {
-        console.log(error)
-      })
-  }
+        console.log(error);
+      });
+  };
   //--------------------------------------
 
   return (
     <>
-      <div className='cancellation_form'>
+      <div className="cancellation_form">
         <table>
           <thead>
             <tr>
@@ -88,7 +90,7 @@ export default function FormularioCancelacion() {
                 <tr key={materia.idMateria}>
                   <td>
                     <input
-                      type='checkbox'
+                      type="checkbox"
                       onChange={(event) =>
                         handleCheckboxChange(event, materia.idMateria)
                       }
@@ -107,17 +109,17 @@ export default function FormularioCancelacion() {
           </tbody>
         </table>
         <textarea
-          className='text-area'
-          placeholder='Ingresa la Justificación.'
+          className="text-area"
+          placeholder="Ingresa la Justificación."
           required
           value={motivo}
           onChange={(event) => {
-            setMotivo(event.target.value)
+            setMotivo(event.target.value);
           }}
         ></textarea>
-        <div className='button-container'>
+        <div className="button-container">
           <button
-            className='send-button'
+            className="send-button"
             disabled={!idMateria}
             onClick={handleCancelacionCurso}
           >
@@ -126,5 +128,5 @@ export default function FormularioCancelacion() {
         </div>
       </div>
     </>
-  )
+  );
 }

@@ -1,13 +1,12 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import ModalReglamento from '../Modals/ModalReglamento'
-import { Button } from '@mui/material'
+import React, { useState, useEffect } from 'react'
+// import ModalReglamento from "../Modals/ModalReglamento";
+// import { Button } from "@mui/material";
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import InformacionReglamento from '../Modals/InformacionReglamento'
+// import InformacionReglamento from "../Modals/InformacionReglamento";
 
-export default function DatosEstudiante() {
-  const [mostrarAd, setMostrarAd] = useState(false)
+export default function DatosProfesorado() {
+  // const [mostrarAd, setMostrarAd] = useState(false);
 
   //Consumo de la Api-rest
   const [usuario, setUsuario] = useState([])
@@ -52,7 +51,7 @@ export default function DatosEstudiante() {
               <span>{now}</span>
             </li>
             <li>
-              <p>Estuadiante:</p>
+              <p>Docente:</p>
               <span>
                 {usuario.nombre} {usuario.apellido}
               </span>
@@ -67,18 +66,7 @@ export default function DatosEstudiante() {
             </li>
           </ul>
         </div>
-        <div className='rules_information'>
-          <Button
-            className='rules_rectangle show-modal'
-            onClick={() => setMostrarAd(true)}
-          >
-            Reglamento
-          </Button>
-          <div className='rules_circle show-modal'>i</div>
-        </div>
       </div>
-      <ModalReglamento mostrarAd={mostrarAd} setMostrarAd={setMostrarAd}
-      contenido={<InformacionReglamento/>}/>
     </>
   )
 }
