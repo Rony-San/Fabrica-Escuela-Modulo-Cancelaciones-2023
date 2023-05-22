@@ -1,35 +1,42 @@
-import { loginSuccess, loginFailure } from '../../app/features/auth/authSlice' 
+import { loginSuccess, loginFailure } from '../../app/features/auth/authSlice'
 import { useNavigate } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
-import { useDispatch } from 'react-redux' 
+import { useDispatch } from 'react-redux'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 
 export default function FormLogin() {
-
   const [usuario, setUsuario] = useState('')
   const [contraseña, setContraseña] = useState('')
-  
+
   const navegate = useNavigate()
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    login( usuario, contraseña )
+    e.preventDefault()
+    login(usuario, contraseña)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => console.log(error))
   }
 
   const login = async (usuario, contraseña) => {
-    await axios.post('http://localhost:8080/api/login/autenticar', { usuario, contraseña })
-      .then(response => {
-        const user  = response.data
+    await axios
+      .post('http://localhost:8080/api/login/autenticar', {
+        usuario,
+        contraseña
+      })
+      .then((response) => {
+        const user = response.data
         dispatch(loginSuccess({ user }))
         navegate('/cancelacionCurso')
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch(loginFailure({ error: error.message }))
         toast.error('Usuario o contraseña incorrectos')
-      });
+      })
   }
 
   return (
