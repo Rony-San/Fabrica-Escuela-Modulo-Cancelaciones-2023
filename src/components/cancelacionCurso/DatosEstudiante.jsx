@@ -1,14 +1,12 @@
 import ModalReglamento from '../Modals/ModalReglamento'
 import { useSelector } from 'react-redux'
 import { Button } from '@mui/material'
-import React, { useState} from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
 import InformacionReglamento from '../Modals/InformacionReglamento'
 
 export default function DatosEstudiante() {
   const [mostrarAd, setMostrarAd] = useState(false)
-  
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+
   const userState = useSelector((state) => state.auth.user)
 
   //Fecha
@@ -54,8 +52,11 @@ export default function DatosEstudiante() {
           <div className='rules_circle show-modal'>i</div>
         </div>
       </div>
-      <ModalReglamento mostrarAd={mostrarAd} setMostrarAd={setMostrarAd}
-      contenido={<InformacionReglamento/>}/>
+      <ModalReglamento
+        mostrarAd={mostrarAd}
+        setMostrarAd={setMostrarAd}
+        contenido={<InformacionReglamento />}
+      />
     </>
   )
 }
