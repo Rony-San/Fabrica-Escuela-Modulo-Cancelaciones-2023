@@ -3,16 +3,18 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 import counterReducer from './features/counter/counterSlice'
+import authReducer  from './features/auth/authSlice'
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['counter'],
-    blacklist: []
+    whitelist: ['counter', 'auth'],
+    blacklist: [],
 }
 
 const rootReducer = combineReducers({
-    counter: counterReducer
+    counter: counterReducer,
+    auth: authReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

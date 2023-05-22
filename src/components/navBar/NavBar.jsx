@@ -1,6 +1,18 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../app/features/auth/authSlice"
+
 export default function NavBar({ usuario }) {
+
+  const dispatch = useDispatch()
+  const navegate = useNavigate()
+
+  const handleLogout = () => {
+    dispatch(logout())
+    navegate('/home')
+  }
+
   return (
     <>
       <div className="navbar_cancelacion">
@@ -16,7 +28,7 @@ export default function NavBar({ usuario }) {
           </li>
           <li>
             <a href="">
-              <button>Salida Segura</button>
+              <button onClick={handleLogout}>Salida Segura</button>
             </a>
           </li>
         </ul>

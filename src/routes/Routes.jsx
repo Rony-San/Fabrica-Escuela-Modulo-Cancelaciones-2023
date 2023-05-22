@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-
+import React from 'react'
+import { useSelector } from 'react-redux'
 import ErrorPage from '../views/error/ErrorPage'
 import Default from '../views/default/Default'
 import Login from '../views/login/Login'
@@ -16,7 +17,7 @@ export default function MainRoutes() {
           <Route path='home' element={<HomePage />} />
           <Route path='default' element={<Default />} />
           <Route path='login' element={<Login />} />
-          <Route path='cancelacionCurso/:user' element={<CancelacionCurso />} />
+          <Route path='cancelacionCurso' element={<CancelacionCurso />} />
           
           <Route
             path='cancelacionesPendientes'

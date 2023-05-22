@@ -1,29 +1,33 @@
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import React from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
 
 export default function FormularioCancelacion() {
+
   //Carga las materias de un estudiante
-  const [materias, setMaterias] = useState([])
+    const [materias, setMaterias] = useState([])
 
-  const fetchData = async () => {
-    return axios
-      .get('http://localhost:8080/api/materia/find-all')
-      .then((response) => {
-        setMaterias(response.data)
-      })
-  }
+    const fetchData = async () => {
+      return axios
+        .get('http://localhost:8080/api/materia/find-all')
+        .then((response) => {
+          setMaterias(response.data)
+        })
+    }
 
-  useEffect(() => {
-    fetchData().then(response => console.log(response)).catch(error => console.log(error))
-  }, [])
+    useEffect(() => {
+      fetchData()
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
+    }, [])
   //--------------------------------------
 
   //Envia los datos de una solicitud al backend
   const [idMateria, setIdMateria] = useState(null)
   const [motivo, setMotivo] = useState('')
-  const {user} = useParams()
+  const userState = useSelector((state) => state.auth.user)
+  console.log(useSelector((state) => state.auth.isAuthenticated))
 
   const handleCheckboxChange = (event, key) => {
     const isChecked = event.target.checked
@@ -40,11 +44,10 @@ export default function FormularioCancelacion() {
         .post('http://localhost:8080/api/solicitud-cancelaciones/save', {
           idMateria: idMateria,
           motivo: motivo,
-          user: user
+          user: userState.usuarioInstitucional
         })
         .then(
           (response) => {
-            //toast.error('Usuario o contraseña incorrectos')
             console.log(response.data)
           },
           (fail) => {
@@ -97,8 +100,8 @@ export default function FormularioCancelacion() {
                       checked={idMateria === materia.idMateria}
                     />
                   </td>
-                  <td>{materia.nombre}</td>
                   <td>202568</td>
+                  <td>{materia.nombre}</td>
                   <td>{materia.creditos}</td>
                   <td>05</td>
                   <td>NA</td>
