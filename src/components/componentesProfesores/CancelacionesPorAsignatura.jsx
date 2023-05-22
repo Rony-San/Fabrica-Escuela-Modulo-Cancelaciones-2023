@@ -24,16 +24,6 @@ const CancelacionesPorAsignatura = () => {
   // const [motivo, setMotivo] = useState('')
   const motivo = 'Motivo de cancelación'
 
-  // useless method
-  // const handleCheckboxChange = (event, key) => {
-  //   const isChecked = event.target.checked
-  //   if (isChecked) {
-  //     setIdMateria(key)
-  //   } else {
-  //     setIdMateria(null)
-  //   }
-  // }
-
   async function cancelacionCurso() {
     try {
       await axios
@@ -55,17 +45,6 @@ const CancelacionesPorAsignatura = () => {
     }
   }
 
-  // useless method
-  // const handleCancelacionCurso = (event) => {
-  //   event.preventDefault()
-  //   cancelacionCurso()
-  //     .then(() => {
-  //       console.log('Cancelación enviada')
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //     })
-  // }
   return (
     <div className='cancellation_form cancellation_form_profesores'>
       <h3>NOMBRE DE LA MATERIA</h3>
