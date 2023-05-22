@@ -1,42 +1,17 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
 import ModalReglamento from '../Modals/ModalReglamento'
+import { useSelector } from 'react-redux'
 import { Button } from '@mui/material'
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import React, { useState } from 'react'
 import InformacionReglamento from '../Modals/InformacionReglamento'
 
 export default function DatosEstudiante() {
   const [mostrarAd, setMostrarAd] = useState(false)
 
-  //Consumo de la Api-rest
-  const [usuario, setUsuario] = useState([])
-  const { user } = useParams()
-
-  const fetchData = async () => {
-    return axios
-      .get(
-        'http://localhost:8080/api/estudiante/find-estudiante-by-usuario/' +
-          user
-      )
-      .then((response) => {
-        setUsuario(response.data)
-      })
-  }
-
-  useEffect(() => {
-    fetchData()
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, [])
+  const userState = useSelector((state) => state.auth.user)
 
   //Fecha
   const today = new Date()
-  const now = today.toLocaleDateString('en-US')
+  const now = today.toLocaleDateString('es-co')
 
   //Datos temporales
   const programa = 'Ingeniería de sistemas'
@@ -52,9 +27,9 @@ export default function DatosEstudiante() {
               <span>{now}</span>
             </li>
             <li>
-              <p>Estuadiante:</p>
+              <p>Estudiante:</p>
               <span>
-                {usuario.nombre} {usuario.apellido}
+                {userState.nombre} {userState.apellido}
               </span>
             </li>
             <li>
@@ -77,8 +52,11 @@ export default function DatosEstudiante() {
           <div className='rules_circle show-modal'>i</div>
         </div>
       </div>
-      <ModalReglamento mostrarAd={mostrarAd} setMostrarAd={setMostrarAd}
-      contenido={<InformacionReglamento/>}/>
+      <ModalReglamento
+        mostrarAd={mostrarAd}
+        setMostrarAd={setMostrarAd}
+        contenido={<InformacionReglamento />}
+      />
     </>
   )
 }
