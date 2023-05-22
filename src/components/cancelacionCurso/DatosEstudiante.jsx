@@ -1,8 +1,9 @@
 import ModalReglamento from '../Modals/ModalReglamento'
 import { useSelector } from 'react-redux'
 import { Button } from '@mui/material'
-import { useState} from 'react'
-import React from 'react'
+import React, { useState} from 'react'
+import axios from 'axios'
+import InformacionReglamento from '../Modals/InformacionReglamento'
 
 export default function DatosEstudiante() {
   const [mostrarAd, setMostrarAd] = useState(false)
@@ -53,7 +54,8 @@ export default function DatosEstudiante() {
           <div className='rules_circle show-modal'>i</div>
         </div>
       </div>
-      <ModalReglamento mostrarAd={mostrarAd} setMostrarAd={setMostrarAd} />
+      <ModalReglamento mostrarAd={mostrarAd} setMostrarAd={setMostrarAd}
+      contenido={<InformacionReglamento/>}/>
     </>
   )
 }

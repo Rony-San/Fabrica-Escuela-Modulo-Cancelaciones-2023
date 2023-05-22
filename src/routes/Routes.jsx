@@ -8,6 +8,9 @@ import HomePage from '../views/homePage/HomePage'
 import CancelacionCurso from '../views/cancenlacionCurso/CancelacionCurso'
 import CancelacionesPendientes from '../views/cancelacionesPendientes/CancelacionesPendientes'
 
+import DocentesCancelaciones from '../views/docentesCancelaciones/DocentesCancelaciones'
+import DocenteRevisionCancelaciones from '../views/docenteRevisionCancelaciones/DocenteRevisionCancelaciones'
+
 export default function MainRoutes() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   return (
@@ -24,14 +27,22 @@ export default function MainRoutes() {
               isAuthenticated ? <CancelacionCurso /> : <Navigate to='/login' />
             }
           />
+          <Route
+            path="docentesCancelaciones"
+            element={<DocentesCancelaciones />}
+          />
 
           <Route
-            path='cancelacionesPendientes'
+            path="cancelacionesPendientes"
             element={<CancelacionesPendientes />}
           />
+          <Route
+            path="docenteRevisionCancelaciones"
+            element={<DocenteRevisionCancelaciones />}
+          />
         </Route>
-        <Route path='*' element={<ErrorPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }

@@ -1,19 +1,20 @@
 import React from "react";
+
 import Navbar from "../../components/navBar/NavBar";
-import Menu from "../../components/menu/Menu";
-import DatosEstudiante from "../../components/cancelacionCurso/DatosEstudiante";
-import CancelacionesEnviadas from "../../components/cancelacionesEnviadas/CancelacionesEnviadas";
+import Asignaturas from "../../components/componentesProfesores/Asignaturas";
 import Footer from "../../components/Footer/Footer";
-const CancelacionesPendientes = () => {
+import MenuProfesores from "../../components/menu/MenuProfesores";
+import DatosProfesorado from "../../components/cancelacionCurso/DatosProfesorado";
+const DocentesCancelaciones = () => {
   return (
     <div className="body_cancelacion">
       <div className="bannerCancelacion">
         <Navbar usuario={"ESTUDIANTES"} />
         <div className="main_wrapper_form_cursos">
-          <Menu estudiante={true} />
+          <MenuProfesores />
           <div className="form">
-            <DatosEstudiante />
-            <CancelacionesEnviadas />
+            <DatosProfesorado />
+            <Asignaturas></Asignaturas>
           </div>
         </div>
         <Footer />
@@ -22,4 +23,4 @@ const CancelacionesPendientes = () => {
   );
 };
 
-export default CancelacionesPendientes;
+export default DocentesCancelaciones;
