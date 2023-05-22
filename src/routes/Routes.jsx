@@ -9,6 +9,7 @@ import CancelacionCurso from '../views/cancenlacionCurso/CancelacionCurso'
 import CancelacionesPendientes from '../views/cancelacionesPendientes/CancelacionesPendientes'
 
 export default function MainRoutes() {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   return (
     <BrowserRouter>
       <Routes>
@@ -17,8 +18,13 @@ export default function MainRoutes() {
           <Route path='home' element={<HomePage />} />
           <Route path='default' element={<Default />} />
           <Route path='login' element={<Login />} />
-          <Route path='cancelacionCurso' element={<CancelacionCurso />} />
-          
+          <Route
+            path='cancelacionCurso'
+            element={
+              isAuthenticated ? <CancelacionCurso /> : <Navigate to='/login' />
+            }
+          />
+
           <Route
             path='cancelacionesPendientes'
             element={<CancelacionesPendientes />}
