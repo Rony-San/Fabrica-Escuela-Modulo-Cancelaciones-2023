@@ -24,7 +24,7 @@ export default function FormLogin() {
 
   const login = async (usuario, contraseña) => {
     await axios
-      .post('http://localhost:8080/api/login/autenticar', {
+      .post('http://localhost:8080/api/estudiante/autenticar-login', {
         usuario,
         contraseña
       })
