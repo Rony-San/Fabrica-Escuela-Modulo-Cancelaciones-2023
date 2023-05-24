@@ -6,9 +6,10 @@ export default function FormularioCancelacion() {
   //Carga las materias de un estudiante
   const [materias, setMaterias] = useState([])
 
+  //Cambiar ruta por una funcional
   const fetchData = async () => {
     return axios
-      .get('http://localhost:8080/api/materia/find-all')
+      .get('http://localhost:8080/api/materia/find-one/M001')
       .then((response) => {
         setMaterias(response.data)
       })

@@ -13,10 +13,6 @@ export default function DatosEstudiante() {
   const today = new Date()
   const now = today.toLocaleDateString('es-co')
 
-  //Datos temporales
-  const programa = 'Ingeniería de sistemas'
-  const semestre = '5'
-
   return (
     <>
       <div className='first_line_form'>
@@ -34,11 +30,11 @@ export default function DatosEstudiante() {
             </li>
             <li>
               <p>Programa:</p>
-              <span>{programa}</span>
+              <span>{userState.programaAcademico}</span>
             </li>
             <li>
-              <p>Semestre:</p>
-              <span>{semestre}</span>
+              <p>Nivel:</p>
+              <span>{userState.nivelAcademico}</span>
             </li>
           </ul>
         </div>
