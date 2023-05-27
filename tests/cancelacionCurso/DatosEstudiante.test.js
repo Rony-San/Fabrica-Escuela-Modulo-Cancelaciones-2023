@@ -12,42 +12,41 @@ describe('DatosEstudiante', () => {
     //Test
     let comp
     const useSelectorMock = reactRedux.useSelector
-
     const mockStore = {
+        nombre: 'nombre',
+        apellido: 'apellido',
+        programaAcademico: 'progAcademico',
+        nivelAcademico: 'nivelAcademico',
         auth: {
             user: 'usuario',
         }
     }
-
-    beforeEach(() => {
-        // Se ejecuta antes de cada test
-        // Si para cada test se necesita renderizar el componente, sin cambiarle nada, se puede hacer aqui
-        // Si no se debe hacer directamente en el test
+    let userState = useSelectorMock.mockImplementation(selector => selector(mockStore))
+    test('renders DatosEstudiante component', () => {
         comp = render(<DatosEstudiante />)
-        useSelectorMock.mockImplementation(selector => selector(mockStore))
-        //console.log("beforeEach")
+        // comp.debug()
+    })
+    beforeEach(() => {
+        userState = useSelectorMock.mockImplementation(selector => selector(mockStore))
+        comp = render(<DatosEstudiante />)
     })
     afterEach(()=> {
         useSelectorMock.mockClear()
     })
     it('should render the following texts', () => {
-        // let comp = render(<DatosEstudiante />)
-        // const todayText = screen.getByText('today')
-        const nowText = screen.getByText('now')
-
-        // comp.debug()
-
-        //expect(todayText).toBeInTheDocument()
-        expect(nowText).toBeInTheDocument()
-    })
-    it('should render a ul by userState', () => {
-        const wrapper = shallow(<userState />)
-        expect(wrapper.find('ul').length).toBe(4)
+        const date = new Date().toLocaleDateString('es-co')
+        const nowText = screen.getByText(date).textContent
+        expect(nowText).toBe(date)
     })
     it('should render the following buttons', () => {
-        // let comp = render(<DatosEstudiante />)
         const rulesBtn = screen.getByRole('button', { name: 'Reglamento' })
-
         expect(rulesBtn).toBeInTheDocument()
+    })
+    it('should call onClick once when I click the rules button.', () => {
+        const rulesBtn = screen.getByRole('button', { name: 'Reglamento' })
+        const onClick = jest.fn()
+        rulesBtn.onclick = onClick
+        fireEvent.click(rulesBtn)
+        expect(onClick).toHaveBeenCalledTimes(1)
     })
 })
