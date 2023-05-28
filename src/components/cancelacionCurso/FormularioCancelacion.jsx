@@ -3,15 +3,20 @@ import { useSelector } from 'react-redux'
 import axios from 'axios'
 
 export default function FormularioCancelacion() {
-  //Carga las materias de un estudiante
-  const [materias, setMaterias] = useState([])
+  const userState = useSelector((state) => state.auth.user)
 
-  //Cambiar ruta por una funcional
+  const [materias, setMaterias] = useState([])
+  const [idMateria, setIdMateria] = useState(null)
+  const [motivo, setMotivo] = useState('')
+  const [creditosTotales, setCreditosTotales] = useState(null)
+
   const fetchData = async () => {
     return axios
-      .get('http://localhost:8080/api/materia/find-one/M001')
+      .get('http://localhost:8080/api/estudiante-materia/find-all-by-documento-estudiante/' +
+        userState.documentoEstudiante)
       .then((response) => {
         setMaterias(response.data)
+        //calcularCreditosTotales(response.data)
       })
   }
 
@@ -20,13 +25,6 @@ export default function FormularioCancelacion() {
       .then((response) => console.log(response))
       .catch((error) => console.log(error))
   }, [])
-  //--------------------------------------
-
-  //Envia los datos de una solicitud al backend
-  const [idMateria, setIdMateria] = useState(null)
-  const [motivo, setMotivo] = useState('')
-  const userState = useSelector((state) => state.auth.user)
-  console.log(useSelector((state) => state.auth.isAuthenticated))
 
   const handleCheckboxChange = (event, key) => {
     const isChecked = event.target.checked
@@ -40,17 +38,19 @@ export default function FormularioCancelacion() {
   async function cancelacionCurso() {
     try {
       await axios
-        .post('http://localhost:8080/api/solicitud-cancelaciones/save', {
+        .post('http://localhost:8080/api/solicitud-cancelacion/guardar-solicitud', {
           idMateria: idMateria,
           motivo: motivo,
-          user: userState.usuarioInstitucional
+          documentoEstudiante: userState.documentoEstudiante,
+
         })
         .then(
           (response) => {
-            console.log(response.data)
+            window.location.reload()
           },
           (fail) => {
             console.error(fail)
+            window.alert('Ya existe una solicitud de cancelación para esta materia')
           }
         )
     } catch (error) {
@@ -60,15 +60,29 @@ export default function FormularioCancelacion() {
 
   const handleCancelacionCurso = (event) => {
     event.preventDefault()
-    cancelacionCurso()
-      .then(() => {
-        console.log('Cancelación enviada')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    if (creditosTotales > 8) {
+      window.alert('No tiene creditos suficientes para cancelar el curso')
+    } else {
+      cancelacionCurso()
+        .then(() => {
+          console.log('Cancelación enviada')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
   }
-  //--------------------------------------
+
+  //Realizar de forma diferente
+  const calcularCreditosTotales = (datos) => {
+    let creditos = 0
+    datos.forEach((dato) => {
+      if (datos.estado === 'cursando') {
+        creditos += dato.creditos
+      }
+    })
+    setCreditosTotales(creditos)
+  }
 
   return (
     <>
@@ -80,32 +94,31 @@ export default function FormularioCancelacion() {
               <th>Materia</th>
               <th>Apocope</th>
               <th>Creditos</th>
-              <th>Grupos</th>
-              <th>Correquisitos</th>
+              <th>Grupo</th>
               <th>% evaluado</th>
               <th>Nota</th>
             </tr>
           </thead>
           <tbody>
             {materias.length > 0 &&
-              materias.map((materia) => (
-                <tr key={materia.idMateria}>
+              materias.map((curso) => (
+                <tr key={curso.materia.idMateria}>
                   <td>
                     <input
                       type='checkbox'
+                      disabled={curso.estado == 'Cancelada'}
                       onChange={(event) =>
-                        handleCheckboxChange(event, materia.idMateria)
+                        handleCheckboxChange(event, curso.materia.idMateria)
                       }
-                      checked={idMateria === materia.idMateria}
+                      checked={idMateria === curso.materia.idMateria}
                     />
                   </td>
-                  <td>202568</td>
-                  <td>{materia.nombre}</td>
-                  <td>{materia.creditos}</td>
-                  <td>05</td>
-                  <td>NA</td>
-                  <td>60</td>
-                  <td>2.3</td>
+                  <td>{curso.materia.codigo}</td>
+                  <td>{curso.materia.nombre}</td>
+                  <td>{curso.materia.creditos}</td>
+                  <td>{curso.grupo}</td>
+                  <td>{curso.porcentajeEvaluado}</td>
+                  <td>{curso.nota}</td>
                 </tr>
               ))}
           </tbody>
