@@ -1,11 +1,25 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React from "react"
+import { NavLink } from "react-router-dom"
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import { changeRole } from '../../app/features/auth/authSlice'
+import { useDispatch } from 'react-redux'
+
 export default function HomePage() {
+
+  const dispatch = useDispatch()
+
+  const handleEstudiante = () => {
+    dispatch(changeRole({role: 'student'}))
+  }
+
+  const handleProfesor = () => {
+    dispatch(changeRole({role: 'teacher'}))
+  }
+
   const scrollToBottom = () => {
-    document.body.scrollIntoView({ behavior: "smooth", block: "end" });
+    document.body.scrollIntoView({ behavior: "smooth", block: "end" })
   };
 
   const settings = {
@@ -15,7 +29,8 @@ export default function HomePage() {
     centerPadding: "40px",
     slidesToShow: 3,
     speed: 300,
-  };
+  }
+
   return (
     <>
       <div className="banner">
@@ -23,10 +38,10 @@ export default function HomePage() {
         <div className="navbar_home">
           <img src="/Universidad_Logo.jpg" className="logo_home" alt="Banner" />
           <ul>
-            <li>
+            <li onClick={handleEstudiante}>
               <NavLink to="/login">Estudiantes</NavLink>
             </li>
-            <li>
+            <li onClick={handleProfesor}>
               <NavLink to="/login">Profesores</NavLink>
             </li>
             <li>
@@ -79,8 +94,10 @@ export default function HomePage() {
               </div>
               <div className="card">
                 <div className="card_background">ANÁLISIS 2</div>
-                <h3 className="card_subject">2</h3>
-                <div className="card-members">integrantes</div>
+                <h3 className="card_subject">Back-end</h3>
+                <div className="card-members">
+                  <p>Juan Felipe Escobar Rendón</p>
+                </div>
               </div>
               <div className="card">
                 <div className="card_background">ARQUITECTURA</div>
