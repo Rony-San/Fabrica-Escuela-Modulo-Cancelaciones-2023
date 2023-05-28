@@ -43,7 +43,7 @@ const CancelacionesEnviadas = () => {
         })
 
     } else {
-      window.alert('No es posible eliminar una solicitud que ya ha sido aceptada')
+      window.alert('No es posible cancelar una solicitud que ya ha sido aceptada o rechazada')
     }
   }
 

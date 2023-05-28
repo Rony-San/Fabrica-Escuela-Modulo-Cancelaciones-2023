@@ -102,6 +102,7 @@ const CancelacionesPorAsignatura = () => {
             <th>Justificación</th>
             <th>% evaluado</th>
             <th>Nota</th>
+            <th>Estado</th>
           </tr>
         </thead>
         <tbody>
@@ -121,6 +122,7 @@ const CancelacionesPorAsignatura = () => {
                 <td>{solicitud.justificacionCancelacion}</td>
                 <td>{solicitud.estudianteMateria.porcentajeEvaluado}</td>
                 <td>{solicitud.estudianteMateria.nota}</td>
+                <td>{solicitud.estadoSolicitud}</td>
               </tr>
             ))}
         </tbody>

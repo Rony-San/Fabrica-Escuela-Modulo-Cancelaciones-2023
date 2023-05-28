@@ -10,6 +10,7 @@ export default function FormLogin() {
   const [usuario, setUsuario] = useState('')
   const [contraseña, setContraseña] = useState('')
   const [url, setUrl] = useState('')
+  const [text, setText] = useState('')
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -19,8 +20,10 @@ export default function FormLogin() {
   useEffect(() => {
     if (role === 'student') {
       setUrl('http://localhost:8080/api/estudiante/autenticar-login')
+      setText('Estudiantes')
     } else {
       setUrl('http://localhost:8080/api/profesor/autenticar-login')
+      setText('Profesores')
     }
   }, [role])
 
@@ -56,7 +59,7 @@ export default function FormLogin() {
 
   return (
     <div className='main_wrapper'>
-      <h1>Ingreso</h1>
+      <h1> {text} </h1>
       <form onSubmit={handleSubmit}>
         <div className='text_field'>
           <input

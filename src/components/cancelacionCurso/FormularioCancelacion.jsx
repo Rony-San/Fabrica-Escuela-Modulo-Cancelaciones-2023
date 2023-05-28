@@ -9,8 +9,9 @@ export default function FormularioCancelacion() {
   const [idMateria, setIdMateria] = useState(null)
   const [motivo, setMotivo] = useState('')
   const [creditosTotales, setCreditosTotales] = useState(null)
+  const [creditosACancelar, setCreditosACancelar] = useState(null)
 
-  const fetchData = async () => {
+  const cargarMaterias = async () => {
     return axios
       .get('http://localhost:8080/api/estudiante-materia/find-all-by-documento-estudiante/' +
         userState.documentoEstudiante)
@@ -21,17 +22,33 @@ export default function FormularioCancelacion() {
   }
 
   useEffect(() => {
-    fetchData()
-      .then((response) => console.log(response))
+    cargarMaterias()
+      .then((response) => {
+
+      })
       .catch((error) => console.log(error))
   }, [])
 
-  const handleCheckboxChange = (event, key) => {
+  useEffect(() => {
+    if (materias.length > 0) {
+      let aux = 0
+      materias.map((curso) => {
+        if (curso.estado === 'Cursando') {
+          aux += parseInt(curso.materia.creditos)
+        }
+      })
+      setCreditosTotales(aux)
+    }
+  }, [materias])
+
+  const handleCheckboxChange = (event, key, creditos) => {
     const isChecked = event.target.checked
     if (isChecked) {
       setIdMateria(key)
+      setCreditosACancelar(creditos)
     } else {
       setIdMateria(null)
+      setCreditosACancelar(null)
     }
   }
 
@@ -42,7 +59,6 @@ export default function FormularioCancelacion() {
           idMateria: idMateria,
           motivo: motivo,
           documentoEstudiante: userState.documentoEstudiante,
-
         })
         .then(
           (response) => {
@@ -60,9 +76,7 @@ export default function FormularioCancelacion() {
 
   const handleCancelacionCurso = (event) => {
     event.preventDefault()
-    if (creditosTotales > 8) {
-      window.alert('No tiene creditos suficientes para cancelar el curso')
-    } else {
+    if (creditosTotales - parseInt(creditosACancelar) >= 8) {
       cancelacionCurso()
         .then(() => {
           console.log('Cancelación enviada')
@@ -70,18 +84,9 @@ export default function FormularioCancelacion() {
         .catch((error) => {
           console.log(error)
         })
+    } else {
+      window.alert('No hay suficientes creditos para cancelar esta materia')
     }
-  }
-
-  //Realizar de forma diferente
-  const calcularCreditosTotales = (datos) => {
-    let creditos = 0
-    datos.forEach((dato) => {
-      if (datos.estado === 'cursando') {
-        creditos += dato.creditos
-      }
-    })
-    setCreditosTotales(creditos)
   }
 
   return (
@@ -108,7 +113,7 @@ export default function FormularioCancelacion() {
                       type='checkbox'
                       disabled={curso.estado == 'Cancelada'}
                       onChange={(event) =>
-                        handleCheckboxChange(event, curso.materia.idMateria)
+                        handleCheckboxChange(event, curso.materia.idMateria, curso.materia.creditos)
                       }
                       checked={idMateria === curso.materia.idMateria}
                     />
