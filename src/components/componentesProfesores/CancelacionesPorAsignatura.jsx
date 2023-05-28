@@ -47,11 +47,9 @@ const CancelacionesPorAsignatura = () => {
 
   useEffect(() => {
     if (estadoSolicitud == 'Aceptada' || estadoSolicitud == 'Rechazada') {
-      try {
         actualizarEstadoSolicitud()
-      } catch (error) {
-        console.log(error)
-      }
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error))
     }
   }, [estadoSolicitud])
 

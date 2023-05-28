@@ -3,23 +3,14 @@ import { useSelector } from 'react-redux'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { useNavigate } from 'react-router-dom'
-import { NavLink } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import axios from 'axios'
 
 const Asignaturas = () => {
-  //Borrar
-  const asignaturas = [
-    { nombre: 'Matemáticas', codigo: 'MAT101', grupo: '5' },
-    { nombre: 'Historia', codigo: 'HIS201', grupo: '2' },
-    { nombre: 'Ciencias de la Computación', codigo: 'CSC301', grupo: '1' }
-  ]
 
   const [materias, setMaterias] = useState([])
-  const [idMateria, setIdMateria] = useState([])
 
   const userState = useSelector((state) => state.auth.user)
-  const navigate = useNavigate()
 
   const cargarMaterias = async () => {
     return axios

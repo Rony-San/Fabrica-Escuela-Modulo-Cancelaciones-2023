@@ -32,7 +32,7 @@ export default function FormularioCancelacion() {
   useEffect(() => {
     if (materias.length > 0) {
       let aux = 0
-      materias.map((curso) => {
+      materias.forEach((curso) => {
         if (curso.estado === 'Cursando') {
           aux += parseInt(curso.materia.creditos)
         }
