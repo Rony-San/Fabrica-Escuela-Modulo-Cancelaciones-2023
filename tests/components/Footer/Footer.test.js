@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Footer from '../../src/components/Footer/Footer'
+import Footer from '../../../src/components/Footer/Footer'
 
 describe('Footer', () => {
     let comp

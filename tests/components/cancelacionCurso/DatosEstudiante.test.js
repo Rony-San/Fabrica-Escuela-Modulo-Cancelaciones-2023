@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import * as reactRedux from 'react-redux'
 
-import DatosEstudiante from '../../src/components/cancelacionCurso/DatosEstudiante'
+import DatosEstudiante from '../../../src/components/cancelacionCurso/DatosEstudiante'
 
 jest.mock("react-redux", () => ({
     useSelector: jest.fn(),

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import ModalReglamento from '../../src/components/Modals/ModalReglamento'
+import ModalReglamento from '../../../src/components/Modals/ModalReglamento'
 
 describe('ModalReglamento', () => {
     let comp
