@@ -1,17 +1,16 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logout } from "../../app/features/auth/authSlice"
+import { logout } from "../../app/features/auth/authSlice";
 
 export default function NavBar({ usuario }) {
-
-  const dispatch = useDispatch()
-  const navegate = useNavigate()
+  const dispatch = useDispatch();
+  const navegate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logout())
-    navegate('/home')
-  }
+    dispatch(logout());
+    navegate("/home");
+  };
 
   return (
     <>
