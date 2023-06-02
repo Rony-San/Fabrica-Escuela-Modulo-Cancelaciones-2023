@@ -168,6 +168,7 @@ h2 {
 
 .info .students_links {
   padding: 10px 0 10px 0;
+
   width: 33%;
   background-color: var(--Morado);
 }
@@ -385,7 +386,7 @@ th {
   background-color: #f2f2f2;
 }
 
-.cancellation_form input[type='checkbox'] {
+.cancellation_form input[type="checkbox"] {
   margin: 0;
   padding: 0;
   width: 30px;
@@ -465,7 +466,7 @@ th {
   background-color: #f2f2f2;
 }
 
-.secondary_form input[type='checkbox'] {
+.secondary_form input[type="checkbox"] {
   margin: 0;
   padding: 0;
   width: 30px;

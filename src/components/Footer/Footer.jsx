@@ -15,13 +15,6 @@ const Footer = () => {
           </li>
 
           <li>
-            <a href="">Cancelación de semestre</a>
-          </li>
-
-          <li>
-            <a href="">Semestre acádemico</a>
-          </li>
-          <li>
             <a href="">Solicitudes de cancelación</a>
           </li>
         </ul>

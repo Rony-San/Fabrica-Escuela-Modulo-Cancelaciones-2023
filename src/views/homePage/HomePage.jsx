@@ -1,25 +1,24 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-import { changeRole } from '../../app/features/auth/authSlice'
-import { useDispatch } from 'react-redux'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { changeRole } from "../../app/features/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 export default function HomePage() {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleEstudiante = () => {
-    dispatch(changeRole({role: 'student'}))
-  }
+    dispatch(changeRole({ role: "student" }));
+  };
 
   const handleProfesor = () => {
-    dispatch(changeRole({role: 'teacher'}))
-  }
+    dispatch(changeRole({ role: "teacher" }));
+  };
 
   const scrollToBottom = () => {
-    document.body.scrollIntoView({ behavior: "smooth", block: "end" })
+    document.body.scrollIntoView({ behavior: "smooth", block: "end" });
   };
 
   const settings = {
@@ -29,7 +28,7 @@ export default function HomePage() {
     centerPadding: "40px",
     slidesToShow: 3,
     speed: 300,
-  }
+  };
 
   return (
     <>
@@ -88,36 +87,53 @@ export default function HomePage() {
                 <div className="card_background">ANÁLISIS 1</div>
                 <h3 className="card_subject">Front-end</h3>
                 <div className="card-members">
-                  <h3>Rony Santiago Bañol</h3>
+                  <p>Rony Santiago Bañol</p>
                   <p>Jaime Andres Muñoz</p>
+                  <p>Jhona Sebastian Henao</p>
+                  <p>Alejandro Becerra</p>
                 </div>
               </div>
               <div className="card">
                 <div className="card_background">ANÁLISIS 2</div>
                 <h3 className="card_subject">Back-end</h3>
                 <div className="card-members">
-                  <p>Juan Felipe Escobar Rendón</p>
+                  <p>Juan Felipe Rendón</p>
+                  <p>Danilo Tovar</p>
+                  <p>Juan Rivera</p>
+                  <p>Sara Lorena</p>
+                </div>
+              </div>
+              <div className="card">
+                <div className="card_background">CALIDAD</div>
+                <h3 className="card_subject"></h3>
+                <div className="card-members">
+                  <p>Jeison David Moncado</p>
+                  <p>Jhonatan Tamayo</p>
+                  <p>Kieffer Paez</p>
+                </div>
+              </div>
+              <div className="card">
+                <div className="card_background">BASES DE DATOS</div>
+                <h3 className="card_subject"></h3>
+                <div className="card-members">
+                  <p>Samuel David Montoya</p>
+                  <p>Daniel Tabares</p>
                 </div>
               </div>
               <div className="card">
                 <div className="card_background">ARQUITECTURA</div>
-                <h3 className="card_subject">2</h3>
-                <div className="card-members">integrantes</div>
+                <h3 className="card_subject"></h3>
+                <div className="card-members">
+                  <p>Yeison Alexander Córdoba</p>
+                </div>
               </div>
               <div className="card">
-                <div className="card_background">CALIDAD</div>
-                <h3 className="card_subject">2</h3>
-                <div className="card-members">integrantes</div>
-              </div>
-              <div className="card">
-                <div className="card_background">color Xxx</div>
-                <h3 className="card_subject">2</h3>
-                <div className="card-members">integrantes</div>
-              </div>
-              <div className="card">
-                <div className="card_background">color Xxx</div>
-                <h3 className="card_subject">2</h3>
-                <div className="card-members">integrantes</div>
+                <div className="card_background">SCRUM MASTER</div>
+                <h3 className="card_subject"></h3>
+                <div className="card-members">
+                  <p>Mateo Álvarez Madrigal</p>
+                  <p>Steven Alipio Berrio</p>
+                </div>
               </div>
             </Slider>
           </div>
