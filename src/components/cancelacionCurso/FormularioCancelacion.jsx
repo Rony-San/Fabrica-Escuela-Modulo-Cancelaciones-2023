@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 export default function FormularioCancelacion() {
   const userState = useSelector((state) => state.auth.user)
@@ -13,8 +14,10 @@ export default function FormularioCancelacion() {
 
   const cargarMaterias = async () => {
     return axios
-      .get('http://localhost:8080/api/estudiante-materia/find-all-by-documento-estudiante/' +
-        userState.documentoEstudiante)
+      .get(
+        'http://localhost:8080/api/estudiante-materia/find-all-by-documento-estudiante/' +
+          userState.documentoEstudiante
+      )
       .then((response) => {
         setMaterias(response.data)
         //calcularCreditosTotales(response.data)
@@ -23,9 +26,7 @@ export default function FormularioCancelacion() {
 
   useEffect(() => {
     cargarMaterias()
-      .then((response) => {
-
-      })
+      .then((response) => {})
       .catch((error) => console.log(error))
   }, [])
 
@@ -55,20 +56,24 @@ export default function FormularioCancelacion() {
   async function cancelacionCurso() {
     try {
       await axios
-        .post('http://localhost:8080/api/solicitud-cancelacion/guardar-solicitud', {
-          idMateria: idMateria,
-          motivo: motivo,
-          documentoEstudiante: userState.documentoEstudiante,
-        })
-        .then(
-          (response) => {
-            window.location.reload()
-          },
-          (fail) => {
-            console.error(fail)
-            window.alert('Ya existe una solicitud de cancelación para esta materia')
+        .post(
+          'http://localhost:8080/api/solicitud-cancelacion/guardar-solicitud',
+          {
+            idMateria: idMateria,
+            motivo: motivo,
+            documentoEstudiante: userState.documentoEstudiante
           }
         )
+        .then(() => {
+          toast.success('Solicitud enviada')
+          // window.location.reload()
+        })
+        .catch((error) => {
+          console.error(error)
+          window.alert(
+            'Ya existe una solicitud de cancelación para esta materia'
+          )
+        })
     } catch (error) {
       alert(error)
     }
@@ -113,7 +118,11 @@ export default function FormularioCancelacion() {
                       type='checkbox'
                       disabled={curso.estado == 'Cancelada'}
                       onChange={(event) =>
-                        handleCheckboxChange(event, curso.materia.idMateria, curso.materia.creditos)
+                        handleCheckboxChange(
+                          event,
+                          curso.materia.idMateria,
+                          curso.materia.creditos
+                        )
                       }
                       checked={idMateria === curso.materia.idMateria}
                     />
