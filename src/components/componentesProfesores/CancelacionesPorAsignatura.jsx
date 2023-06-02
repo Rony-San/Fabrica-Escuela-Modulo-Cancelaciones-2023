@@ -1,74 +1,136 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import axios from 'axios'
 
 const CancelacionesPorAsignatura = () => {
-  const [materias, setMaterias] = useState([])
+  const [solicitudes, setSolicitudes] = useState([])
+  const [nombreMateria, setNombreMateria] = useState('')
+  const [estadoSolicitud, setEstadoSolicitud] = useState(null)
+  const [idSolicitud, setIdSolicitud] = useState(null)
+
+  const { idMateria } = useParams()
+
+  const userState = useSelector((state) => state.auth.user)
 
   const fetchData = async () => {
     return axios
-      .get('http://localhost:8080/api/materia/find-all')
-      .then((response) => {
-        setMaterias(response.data)
+      .get('http://localhost:8080/api/solicitud-cancelacion/find-solicitud-por-documento-profesor', {
+        params: {
+          idMateria: idMateria,
+          documento: userState.documentoProfesor
+        }
       })
+      .then((response) => {
+        setSolicitudes(response.data)
+      })
+      .catch((error) => { console.log(error) })
   }
 
-  useEffect(() => {
-    fetchData()
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error))
-  }, [])
-  //--------------------------------------
-
-  //Envia los datos de una solicitud al backend
-  const [idMateria, setIdMateria] = useState(null)
-  // const [motivo, setMotivo] = useState('')
-  const motivo = 'Motivo de cancelación'
-
-  async function cancelacionCurso() {
+  const actualizarEstadoSolicitud = async () => {
     try {
-      await axios
-        .post('http://localhost:8080/api/cancel-courses-api', {
-          idMateria: idMateria,
-          motivo: motivo
+      return await axios
+        .put('http://localhost:8080/api/solicitud-cancelacion/actualizar-estado', {
+          estadoSolicitud: estadoSolicitud,
+          idSolicitud: idSolicitud
         })
-        .then(
-          (response) => {
-            //toast.error('Usuario o contraseña incorrectos')
-            console.log(response.data)
-          },
-          (fail) => {
-            console.error(fail)
-          }
-        )
     } catch (error) {
-      alert(error)
+      console.log(error)
     }
   }
 
+  useEffect(() => {
+    if (solicitudes.length > 0) {
+      setNombreMateria(solicitudes[0].estudianteMateria.materia.nombre)
+    }
+  }, [solicitudes])
+
+  useEffect(() => {
+    if (estadoSolicitud == 'Aceptada' || estadoSolicitud == 'Rechazada') {
+        actualizarEstadoSolicitud()
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error))
+    }
+  }, [estadoSolicitud])
+
+  useEffect(() => {
+    fetchData()
+      .then((response) => console.log())
+      .catch((error) => console.log(error))
+  }, [])
+
+  const handleCheckboxChange = (event, key, estado) => {
+    const isChecked = event.target.checked
+    if (isChecked) {
+      setIdSolicitud(key)
+      setEstadoSolicitud(estado)
+    } else {
+      setIdSolicitud(null)
+      setEstadoSolicitud(null)
+    }
+  }
+
+  const handleAceptar = (event) => {
+    event.preventDefault()
+    if (estadoSolicitud == 'Pendiente') {
+      setEstadoSolicitud('Aceptada')
+    } else {
+      window.alert("Esta solicitud ya ha sido aceptada o rechazada")
+    }
+  }
+
+  const handleRechazar = (event) => {
+    event.preventDefault()
+    if (estadoSolicitud == 'Pendiente') {
+      setEstadoSolicitud('Rechazada')
+    } else {
+      window.alert("Esta solicitud ya ha sido aceptada o rechazada")
+    }
+  }
+
+  //<div className='cancellation_form cancellation_form_profesores'>
   return (
-    <div className='cancellation_form cancellation_form_profesores'>
-      <h3>NOMBRE DE LA MATERIA</h3>
+    <div class='secondary_form'>
+      <h3>{nombreMateria}</h3>
       <table>
         <thead>
           <tr>
+            <th></th>
             <th>Estudiante</th>
             <th>Justificación</th>
             <th>% evaluado</th>
             <th>Nota</th>
+            <th>Estado</th>
           </tr>
         </thead>
         <tbody>
-          {materias.length > 0 &&
-            materias.map((materia) => (
-              <tr key={materia.idMateria}>
-                <td>nombre estudiante</td>
-                <td>Justificación</td>
-                <td>60</td>
-                <td>2.3</td>
+          {solicitudes.length > 0 &&
+            solicitudes.map((solicitud) => (
+              <tr key={solicitud.idSolicitudCancelacion}>
+                <td>
+                  <input
+                    type='checkbox'
+                    onChange={(event) =>
+                      handleCheckboxChange(event, solicitud.idSolicitudCancelacion, solicitud.estadoSolicitud)
+                    }
+                    checked={idSolicitud === solicitud.idSolicitudCancelacion}
+                  />
+                </td>
+                <td>{solicitud.estudiante.nombre} {solicitud.estudiante.apellido}</td>
+                <td>{solicitud.justificacionCancelacion}</td>
+                <td>{solicitud.estudianteMateria.porcentajeEvaluado}</td>
+                <td>{solicitud.estudianteMateria.nota}</td>
+                <td>{solicitud.estadoSolicitud}</td>
               </tr>
             ))}
         </tbody>
       </table>
+
+      <div class="button-container-2">
+        <button class="check-button" disabled={!idSolicitud} onClick={handleAceptar}>Aceptar</button>
+
+        <button class="delete-button" disabled={!idSolicitud} onClick={handleRechazar}>Rechazar</button>
+      </div>
     </div>
   )
 }

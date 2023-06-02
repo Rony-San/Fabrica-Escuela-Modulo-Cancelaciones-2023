@@ -13,6 +13,16 @@ import DocenteRevisionCancelaciones from '../views/docenteRevisionCancelaciones/
 
 export default function MainRoutes() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+  const role = useSelector((state) => state.auth.role)
+
+  const isTeacher = () => {
+      return isAuthenticated && role === 'teacher'
+  }
+
+  const isStudent = () => {
+    return isAuthenticated && role === 'student'
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -24,21 +34,27 @@ export default function MainRoutes() {
           <Route
             path='cancelacionCurso'
             element={
-              isAuthenticated ? <CancelacionCurso /> : <Navigate to='/login' />
+              isStudent() ? <CancelacionCurso /> : <Navigate to='/home' />
             }
           />
           <Route
             path="docentesCancelaciones"
-            element={<DocentesCancelaciones />}
+            element={
+            isTeacher() ? <DocentesCancelaciones /> : <Navigate to='/home' />
+          }
           />
 
           <Route
             path="cancelacionesPendientes"
-            element={<CancelacionesPendientes />}
+            element={
+              isStudent ? <CancelacionesPendientes /> : <Navigate to='/home' />
+          }
           />
           <Route
-            path="docenteRevisionCancelaciones"
-            element={<DocenteRevisionCancelaciones />}
+            path="docenteRevisionCancelaciones/:idMateria"
+            element={
+              isTeacher ? <DocenteRevisionCancelaciones /> : <Navigate to='/home' />
+          }
           />
         </Route>
         <Route path="*" element={<ErrorPage />} />

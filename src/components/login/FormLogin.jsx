@@ -1,17 +1,31 @@
 import { loginSuccess, loginFailure } from '../../app/features/auth/authSlice'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
-import { useDispatch } from 'react-redux'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 
 export default function FormLogin() {
   const [usuario, setUsuario] = useState('')
   const [contraseña, setContraseña] = useState('')
+  const [url, setUrl] = useState('')
+  const [text, setText] = useState('')
 
-  const navegate = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const role = useSelector((state) => state.auth.role)
+
+  useEffect(() => {
+    if (role === 'student') {
+      setUrl('http://localhost:8080/api/estudiante/autenticar-login')
+      setText('Estudiantes')
+    } else {
+      setUrl('http://localhost:8080/api/profesor/autenticar-login')
+      setText('Profesores')
+    }
+  }, [role])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -24,14 +38,18 @@ export default function FormLogin() {
 
   const login = async (usuario, contraseña) => {
     await axios
-      .post('http://localhost:8080/api/login/autenticar', {
+      .post(url, {
         usuario,
         contraseña
       })
       .then((response) => {
         const user = response.data
         dispatch(loginSuccess({ user }))
-        navegate('/cancelacionCurso')
+        if (role === 'student'){
+          navigate('/cancelacionCurso')
+        } else {
+          navigate('/docentesCancelaciones')
+        }
       })
       .catch((error) => {
         dispatch(loginFailure({ error: error.message }))
@@ -41,7 +59,7 @@ export default function FormLogin() {
 
   return (
     <div className='main_wrapper'>
-      <h1>Ingreso</h1>
+      <h1> {text} </h1>
       <form onSubmit={handleSubmit}>
         <div className='text_field'>
           <input
